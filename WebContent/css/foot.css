@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+/* 底部播放器样式 */
+.m_player{
+	height: 50px;
+	height: 65px;
+	width: 100%;
+	background: #242424;
+	top:-79px;
+	position: relative;
+	border: 0px;
+}
+.m_player .wrap{
+	height: 50px;
+	width: 980px;
+	margin: 0 auto;
+}
+.m_player .btns{
+	width: 137px;
+	height: 100%;
+	float:left;
+}
+.btns-wrap{
+	height: 35px;
+    width: 100px;
+    margin: auto;
+    padding-top: 8px;
+}
+.btns a{
+	display: block;
+	float:left;
+}
+.btns .before{
+	background: url("../image/button_before.png") no-repeat;
+	width: 28px;
+	height: 28px;
+}
+.btns .play-btn{
+	background: url("../image/button_play.png") no-repeat;
+	width: 36px;
+	height: 36px;
+}
+.btns .next{
+	background: url("../image/button_next.png") no-repeat;
+	width: 28px;
+	height: 28px;
+}
+
+.m_player .head-pic{
+	width: 34px;
+	height: 100%;
+	float:left;
+	margin-top: 8px;
+	text-align: center;
+}
+.head-pic img{
+	width: 34px;
+	height: 34px;
+}
+.m_player .play{
+	width: 608px;
+	height: 100%;
+	float:left;
+}
+.m_player .save{
+	width: 50px;
+	height: 100%;
+	float:left;
+	text-align: center;
+}
+.save img,.ctrl img{
+	width: 25px;
+	height: 25px;	
+	margin-top: 12.5px;
+}
+.m_player .ctrl{
+	width: 126px;
+	height: 100%;
+	float:left;
+}
