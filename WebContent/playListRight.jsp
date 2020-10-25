@@ -61,7 +61,7 @@
 						</tr>
 					</thead> 
 					<tbody>
-						<tr id="table-rows-1" onMouseOver="tableRowsOver(this.id)" onMouseOut="tableRowsOut(this.id)">
+						<tr id="table-rows-1">
 						  <td class="w1">1</td>
 						  <td class="w2">
 							  <img src="image/play.png"/>

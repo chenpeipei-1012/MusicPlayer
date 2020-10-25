@@ -37,7 +37,7 @@
 						<a href="index.html">发现音乐</a>
 					</li>
 					<li id="myMusic" onMouseOver="blueMenu(this.id);" onMouseOut="moveMenu(this.id);">
-						<a href="playlist.html">我的音乐</a>
+						<a href="playlist.jsp">我的音乐</a>
 					</li>
 				</ul>
 				<div class="search-wrap">
@@ -53,7 +53,7 @@
 					<div id="userinfo-list-wrap" class="userinfo-list-wrap" >
 						<ul>
 							<li id="li-setting">
-								<a href="setting.html">
+								<a href="setting.jsp">
 									<img src="image/set.png"/>
 									<span>个人设置</span>
 								</a>

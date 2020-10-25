@@ -12,7 +12,6 @@ var city = document.getElementById("scroll-city");
 /* 鼠标悬浮 */
 var unit = document.getElementsByClassName("f-thide");
 
-
 var yearSpan = document.getElementById("year");
 var monthSpan = document.getElementById("month");
 var daySpan = document.getElementById("day");
@@ -68,12 +67,12 @@ function bindEvent(){
 	}
 }
 
+// 初始化年份选择器: 从当前年份往前数共100年
 function initYearSelect(){
 	// 得到当前年份
 	var currentYear = new Date().getFullYear();
 	var str="";
     
-	// 从当前年份往前数共100年
 	for(var i = 0;i<=100;i++){
 		str+='<li class="f-thide"><a href="javascript:void(0)" onclick="choiceYear(this)" onMouseOver="pluginOver(this.id)" onMouseOut="pluginOut(this.id)">'+ currentYear
 			 +'</a></li>';
@@ -83,6 +82,7 @@ function initYearSelect(){
 	yselect.innerHTML = str;
 }
 
+//初始化月份选择器: 1月-12月
 function initMonthSelect(){
 	var str="";
     
@@ -94,6 +94,7 @@ function initMonthSelect(){
 	mselect.innerHTML = str;
 }
 
+// 选择年份
 function choiceYear(year){
 	// 填充span标签中的年份内容
 	yearSpan.innerHTML = year.innerHTML;
@@ -108,7 +109,6 @@ function choiceYear(year){
 	day.addEventListener('click',function(){	
 		bindClickForDay();
 	})
-	
 }
 
 // 选择月份
@@ -121,11 +121,6 @@ function choiceMonth(month){
 
 	// 选中了之后下拉框要消失
 	document.getElementById("mselect").style.display = "none";
-	// 且要给day添加点击事件
-//	day.addEventListener('click',function(){	
-//		bindClickForDay();
-//	})
-	
 }
 
 // 选择天数
@@ -137,28 +132,23 @@ function choiceDay(day){
 	dselect.style.display = "none";
 }
 
-function pluginOver(id){
-//	var li = document.getElementById(id);
-//	li.style.background = "#ccc";
-
-}
-function pluginOut(id){
-//	var li = document.getElementById(id);
-//	li.style.background = "white";
-}
-
+// 初始化省份选择器
 function initProSelect(){
 	var str="";
     
 	// 根据areaLocaltion.js初始化省份选择器
 	for(var i = 0;i<provinceArray.length;i++){
-		str+='<li class="f-thide"><a href="javascript:void(0)" onclick="choicePro(this)">'+
-			provinceArray[i].province +'</a></li>';
+		str+='<li class="f-thide">' +
+			      '<a href="javascript:void(0)" onclick="choicePro(this)">'+
+			provinceArray[i].province +
+			      '</a>' + 
+			 '</li>';
 	}
 	
 	pselect.innerHTML = str;
 }
 
+// 选择省份
 function choicePro(province){
 	// 填充span标签中的省份内容
 	provinceSpan.innerHTML = province.innerHTML;
@@ -176,9 +166,9 @@ function choicePro(province){
 	city.addEventListener('click',function(){	
 		bindClickForCity();
 	})
-	
 }
 
+// 为城市选择器绑定点击事件
 function bindClickForCity(){
 	var proValue = provinceSpan.textContent;
 	var index = getIndexOfProvince(proValue);
@@ -199,6 +189,7 @@ function bindClickForCity(){
 	});
 }
 
+//为day选择器绑定点击事件
 function bindClickForDay(){
 	// 获得年和月
 	var yearValue = parseInt(yearSpan.textContent);
@@ -270,9 +261,11 @@ function getIndexOfProvince(province){
 
 	return index;
 }
-//
+
+// 修改用户信息
 function modifyUserInfo(){
 	var isSubmit = true;
+	var errorMsg = "";
 	
 	var username = document.getElementById("username");
 	var introduce = document.getElementById("introduce");
@@ -285,17 +278,26 @@ function modifyUserInfo(){
 	var proValue = provinceSpan.textContent;
 	var cityValue = citySpan.textContent;
 	
+	// 清除原有的错误信息
+	var errorSpan = document.getElementById("error-msg");
+	var error = document.getElementById("error");
+	errorSpan.innerHTML = "";
+	error.style.display = "none";
+	
 	// 昵称不能为空，其余信息可为空
-	if(username.value == ""){
+	if(username.value == "" || 
+			username.value.length < 2 ||
+			username.value.length > 15){
 	    isSubmit = false;
+	    errorMsg = "昵称2-15字符，且不包含除_和-的特殊字符。";
 	    username.style.border = "1px solid red";
-		document.getElementById("error").style.display = "block";
+	    error.style.display = "block";
 	}
 	
     if(isSubmit){
-	    
+	    // 提交成功    div
+    	// TO DO
 	}
-	
 }
 
 // 更换头像
