@@ -1,160 +1,171 @@
-@charset "utf-8";
-
-/* 澶撮儴鏍峰紡 -- 鍙彁鍙栦负鍏辩敤浠ｇ爜 */
 .head{
-	text-align: center;
-	color: white;
-	height: 75px;
 	width: 100%;
-	border:0;
-	position: relative;
+	height:75px;
+	background: #242424;
 	top: -75px;
+	position: relative;
 }
-.head-top{
-	background-color: #242424;
-	height: 70px;
-}
-.head-line{
-	background-color: #C20C0C;
-	height: 5px;
-}
-.wrapper{
-	width:1100px;
-	height: 70px;
-	margin: 0px auto;
+.hwrap{
+	/* 宽度自适应即可，无需设置*/
+	height:70px;
+	margin:0 170px;
 }
 .logo{
-	width: 50px;
-    height: 40px;
-	position: relative;
-    top: 13px;
-}
-
-.player-wrap{
+	height: 100%;
 	width: 176px;
-	height: 70px;
-	float: left;
-	line-height: 70px;
-}
-.player-name{
-	font-family: Arial;
-	font-size:20px;
+	float:left;
+	background:url("../image/logo.png") no-repeat;
+	background-size: 100%;
 }
 .menu{
-	list-style: none;
-	float: left;
-	padding: 0px;
-	margin: 0px;
+	height: 100%;
 	width: 654px;
-	height: 70px;
+	float:left;
+}
+.search{
+	height:100%;
+	width: 200px;
+	float:left;
+}
+.userpic{
+	height:100%;
+	width: 70px;
+	float:left;
+	line-height: 70px;
+	text-align: center;
+}
+/* ul有默认外边距16px，左内边距40px。需清空默认边距*/
+.menu ul{
+	width:100%;
+	height:100%;
+	margin: 0;
+	padding: 0;
+}
+/* 
+ * li标签默认样式display:list-item，即作为列表显示
+ * 让其作为块元素向左浮动显示 
+ */
+.nav{
+	width: 90px;
+	height:100%;
+	display: block;
+	float: left;
+	/* li标签中的元素水平居中: 设置文本左右对齐方式*/
+	text-align: center;
+	/* li标签中的元素垂直居中: 设置行高 */
 	line-height: 70px;
 }
-.menu li{
-	float:left;
-	width: 90px;
-	font-size: 14px;
-}
-.menu li a{
-	color: #ccc;
-	text-decoration: none;
-}
-.player-wrap{
-	font-size: 20px;
-}
-.search-wrap{
-	height: 70px;
-	width: 200px;
-	float: left;
-}
-.search-box{
-	background-color: #fff;
-	border-radius: 32px;
-	width: 170px;
+.swrap{
 	height: 32px;
-	margin:auto;
-	margin-top:19px;
+	width: 158px;
+	/* margin:auto 只会自动将左右部分设为外边距，上下不会*/
+	margin: auto;
+	background: white;
+	border-radius:32px;
+	/* 让div在div中垂直居中: 给子div设一个上外边距 */
+	margin-top: 19px;
 }
-#search{
-	width: 70%;
+.search-pic{
+	/* 必须指定图片的宽和高 */
+	width: 26px;
+	height:26px;
+	/* 使图片在层中居中 */
+	float: left;
+    position: relative;
+    left: 10px;
+    top: 1px;
+	background:url(../image/search.png) no-repeat;
+}
+.search-input{
+	width: 100px;
+	/* 使搜索框在层中居中*/
+	position: relative;
+	top: 6px;
+    left: 10px;
+	/* 给input框写入提示信息:placeholder */
+	/* 去掉input框自带的边框 */
 	border: 0px;
-	outline: none;
-	vertical-align: middle;
-	margin-top: 5px;
+	/* 去掉input框点击后出现的轮廓线 */
+	outline:none;
 }
-.userinfo-wrap{
-float: right;
-width: 50px;
-height: 75px;
-
-}
-
-.image-wrap{
-	background-color: #fff;
-	border-radius: 32px;
-	display: inline-block;
-	height: 50px;
+.profile{
+	/* 设置宽、高、圆角*/
 	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #EAB7B7;
+	/* 在层中水平居中 */
+	margin: auto;
 	margin-top: 10px;
-	cursor: pointer;
 }
-.userinfo-list-wrap{
+/* 几种字体颜色 */
+.fcolor{
+	color: black;
+}
+/* 默认不显示，鼠标放置头像上，出现下拉列表 */
+.u-list{
+	display: none;
+	z-index: 999;
+    position: absolute;
+    float: right;
+    border-radius: 4px;
+}
+/* 鼠标悬浮在profile用户头像上，则展示下拉列表
+ * userpic和u-list是父子级别关系
+ */
+.userpic:hover .u-list{
+	display: block;
+}
+.arr{
+	width:14px;
+	height:8px;
+	background: url("../image/toplist.png") no-repeat -20px 0;
+	margin: auto;
+}
+.u-ctrl{
+	width: 158px;
 	background: #2b2b2b;
-	width:158px;
-	border: 1px solid #202020;
+	position: relative;
+	left: -40px;
+	/* 设置下拉列表的阴影及圆角 */
 	box-shadow: 0 8px 24px 0 rgba(0,0,0,0.50);
 	border-radius: 4px;
+}
+.u-item{
+	width:100%;
+	height: 34px;
+	/* li的默认样式是列表显示，需改为块状元素显示 */
+	display: block;
+	text-align: left;
+}
+.set{
+	background: url("../image/toplist.png") no-repeat 0 -140px;
+}
+.logout{
+	background: url("../image/toplist.png") no-repeat 0 -200px;
+}
+.pic{
+	width: 18px;
+	height: 18px;
 	position: relative;
-	left: -51px;
-	top: -5px;
-	z-index: 1;
+	left: 20px;
+	top: 8px;
+	float: left;
+}
+.word-item{
+	float: left;
+	height: 34px;
+	line-height: 34px;
+	width: 80px;
+	margin-left: 26px;	
+}
+.u-font{
 	font-size: 12px;
 	color: #ccc;
-	font-family: Arial, Helvetica, sans-serif;
-}
-.userinfo-list-wrap{
-	display: none;
-}
-.userinfo-wrap:hover .userinfo-list-wrap{
-	display: block;
 }
 
-ul{
-	list-style: none;
-}
-.userinfo-list-wrap li{
-	height: 34px;
-	line-height: 34px;
-}
-.userinfo-list-wrap img{
-	height: 30px;
-	width: 30px;
-	float: left;
-	float: left;
-}
-.userinfo-list-wrap a{
-	display: block;
-	height: 34px;
-	line-height: 34px;
-	width: 158px;
-	text-align: left;
-	color: #ccc;
-	text-decoration: none;
-}
-
-.userinfo-list-wrap span{
-	padding-top: 1px;
-	padding-left: 5px;
-}
-
-.user-image{
-	height: 100%;
-	width: 100%;
-	border-radius:50%;
-}
-.search-image{
-	height: 20px;
-	margin-top: 7px;
-	margin-left: -12px;
-	vertical-align: middle;
-	cursor: pointer;
+/* 下划线 */
+.hline{
+	background-color: #C20C0C;
+	height: 5px;
 }

@@ -5,14 +5,10 @@
 	margin: 0;
 	padding: 0;
 }
-/*.head-iframe{
-	height: 75px;
-	width: 100%;
-	border:0;
-	position: relative;
-	top: -75px;
-}*/
-
+#container{
+    width: 100%;
+    height: 100%;
+}
 .cleft-iframe{
 	border: 0;
     width: 737px;
@@ -54,6 +50,11 @@
 	padding-bottom: 10px;
 	cursor: pointer;
 }
+.font-list{
+	font-size: 14px;
+	color: #000;
+	font-family: simsun,\5b8b\4f53;
+}
 .creat{
 	float:right;
 	width: 52px;
@@ -61,11 +62,21 @@
 	border: 1px solid #d3d3d3;
 	border-radius: 5px;
 }
+.create-img{
+	background: url(../image/new.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+}
 .creat i{
 	color: #515151;
     font-size: 12px;
 	font-weight: normal;
     font-style: inherit;
+    position: relative;
+    top: -2px;
 }
 .created-list{
 	width: 140px;
@@ -240,6 +251,7 @@ thead{
 	height: 30px;
 	font-size: 12px;
 	text-align: center;
+	color: #333;
 }
 .m-table .w1{
 	width: 30px;
@@ -263,6 +275,9 @@ thead{
 }
 .m-table .w6{
 	width: 20%;
+}
+.m-table .tbg{
+	background-color: #f7f7f7;
 }
 
 /*

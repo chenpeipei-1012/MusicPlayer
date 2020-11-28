@@ -18,4 +18,7 @@ public interface UserMusicListDao {
 	
 	// 查询某个用户的歌单
 	public List<UserMusicList> queryMusicList(int userId) throws SQLException;
+	
+	// 查询“我喜欢的音乐”歌单的ID
+	public int getLoveMusicListId(int userId) throws SQLException;
 }

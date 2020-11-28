@@ -12,7 +12,23 @@ public class User {
 	private String userPic;
 	private String userNick;
 	private String userIddr;
-	private Date userBirthday;
+	private String userBirthday;
+	
+	public User(){
+		
+	}
+	
+	public User(int userId,String userName,String userGender,String userDesc,
+			String userPic,String userNick,String userIddr,String userBirthday){
+		this.userId = userId;
+		this.userName = userName;
+		this.userGender = userGender;
+		this.userDesc = userDesc;
+		this.userPic = userPic;
+		this.userNick = userNick;
+		this.userIddr = userIddr;
+		this.userBirthday = userBirthday;
+	}
 	
 	public int getUserId() {
 		return userId;
@@ -78,11 +94,11 @@ public class User {
 		this.userIddr = userIddr;
 	}
 	
-	public Date getUserBirthday() {
+	public String getUserBirthday() {
 		return userBirthday;
 	}
 	
-	public void setUserBirthday(Date userBirthday) {
+	public void setUserBirthday(String userBirthday) {
 		this.userBirthday = userBirthday;
 	}
 }

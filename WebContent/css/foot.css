@@ -1,80 +1,283 @@
-@charset "utf-8";
-
-/* 底部播放器样式 */
-.m_player{
-	height: 50px;
-	height: 65px;
-	width: 100%;
-	background: #242424;
-	top:-79px;
+.foot{
+	width:100%;
+	height:67px;
+/*			background: #26BEE2;*/
 	position: relative;
-	border: 0px;
+	top: -75px;
 }
-.m_player .wrap{
-	height: 50px;
-	width: 980px;
-	margin: 0 auto;
+.m-playbar{
+	position: absolute;
+    width: 100%;
+    top: 0px;
+	animation-delay:5s;
 }
-.m_player .btns{
+.updn{
+	height:14px;
+	width:100%;
+
+}
+.left{
+	/* 指定图片在playbar中的位置，图片在第四象限*/
+	background: url("../image/playbar.png") no-repeat 0 -380px;
+	width: 67px;
+	height: 14px;
+	float: right;
+	height: 20px;
+}
+.bg{
+	background: url("../image/playbar.png") 0 0;
+	height: 53px;
+	width: 100%;
+}
+.fwrap{
+	width:980px;
+	height: 47px;
+	margin: auto;
+	position: relative;
+	top: 6px;
+}
+.lock{
+	background: url("../image/playbar.png") no-repeat;
+	width: 18px;
+	height: 18px;
+	/* 使锁在层中垂直居中 */
+	margin-left: 17px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.lockbar{
+	background-position:  -100px -380px;
+}
+.unlockbar{
+	background-position: -80px -380px;
+}
+
+.btns{
 	width: 137px;
 	height: 100%;
 	float:left;
+/*			background:#EDB0B1;*/
 }
-.btns-wrap{
-	height: 35px;
-    width: 100px;
-    margin: auto;
-    padding-top: 8px;
-}
-.btns a{
-	display: block;
-	float:left;
-}
-.btns .before{
-	background: url("../image/button_before.png") no-repeat;
-	width: 28px;
+.pre{
+	width:28px;
 	height: 28px;
+	background: url("../image/playbar.png") no-repeat;
+	float: left;
+	margin-top: 9.5px;
+	margin-right: 8px;
 }
-.btns .play-btn{
-	background: url("../image/button_play.png") no-repeat;
-	width: 36px;
-	height: 36px;
+.pre-move{
+	background-position: -30px -130px;
 }
-.btns .next{
-	background: url("../image/button_next.png") no-repeat;
-	width: 28px;
-	height: 28px;
+.pre-out{
+	background-position: 0 -130px;
 }
 
-.m_player .head-pic{
-	width: 34px;
-	height: 100%;
-	float:left;
-	margin-top: 8px;
-	text-align: center;
+.play{
+	width:36px;
+	height: 36px;
+	background: url("../image/playbar.png") no-repeat;
+	float: left;
+	margin-top: 5.5px;
+	margin-right: 8px;
+	cursor: pointer;
 }
-.head-pic img{
+.picon{
+	
+}
+.play-move{
+	background-position: -40px -204px;
+}
+.play-out{
+	background-position: 0 -204px;
+}
+.play-btn{
+	background-position: 0 -165px;
+}
+.noplay-btn{
+	background-position: 0 -204px;
+}
+
+.next{
+	width:28px;
+	height: 28px;
+	background: url("../image/playbar.png") no-repeat -80px -130px;
+	float: left;
+	margin-top: 9.5px;
+}
+.next-move{
+	background-position:  -110px -130px;
+}
+.next-out{
+	background-position:  -80px -130px;
+}
+
+.head-pic{
 	width: 34px;
 	height: 34px;
+	float:left;
+	background:url("../image/playbar.png") no-repeat 0 -80px;
+	margin-top: 6.5px;
+	margin-right: 15px;
 }
-.m_player .play{
+.play-bar{
 	width: 608px;
+	height: 37px;
+	float:left;
+/*			background: #B5E3DE;*/
+}
+.words{
+	width:100%;
+	height: 28px;
+/*			background: #E2C4C4;*/
+}
+.m-pbar{
+	width:100%;
+	height: 9px;
+}
+.barbg{
+	width: 493px;
 	height: 100%;
+	background: url("../image/statbar.png") no-repeat 0 0;
 	float:left;
 }
-.m_player .save{
-	width: 50px;
+.cur{
+	width: 0%;
 	height: 100%;
+	background: url("../image/statbar.png") no-repeat 0 -66px;
+}
+.move-btn{
+	background: url("../image/ply_btn.png") no-repeat;
+	width: 22px;
+	height:24px;
+	display: block;
+	top: -16px;
+    left: 0%;
+    position: relative;
+    /* position: absolute; */
+    /* left: -2%; */
+    margin-left: -12px;
+}
+.time{
+	font-size: 14px;
+	color: white;
+	float: left;
+	height: 12px;
+	/* margin-bottom: 20px; */
+	position: relative;
+	top: -5px;
+	left: 10px;
+}
+.oper{
+	width: 60px;
+	height: 25px;
 	float:left;
-	text-align: center;
+/*			background:#E8E4A5;*/
+	margin-top: 11px;
 }
-.save img,.ctrl img{
-	width: 25px;
-	height: 25px;	
-	margin-top: 12.5px;
+.like{
+	width:25px;
+	height: 25px;
+	background:url("../image/playbar.png") no-repeat;
+	float: left;
+	margin-right: 2px;
 }
-.m_player .ctrl{
+.like-move{
+	background-position: -88px -189px;
+}
+.like-out{
+	background-position: -88px -163px;
+}
+
+.share{
+	width:25px;
+	height: 25px;
+	background:url("../image/playbar.png") no-repeat;
+	float: left;
+}
+.share-move{
+	background-position:  -114px -189px;
+}
+.share-out{
+	background-position:  -114px -163px;
+}
+
+.ctrl{
 	width: 126px;
-	height: 100%;
+	height: 36px;
 	float:left;
+/*			background:#E7C791;*/
+}
+.m-vol{
+	width: 32px;
+	height:113px;
+	/* 让该div脱离层存在 */
+	float: left;
+    position: absolute;
+    bottom: 46px;
+	background: url(../image/playbar.png) 0 -503px;
+	display: none;
+}
+.volbar-bg{
+	width: 4px;
+	height: 93px;
+	margin: auto;
+	margin-top: 10px;
+}
+.cur-vol{
+	background: url(../image/playbar.png) -40px bottom;
+	height: 50%;
+	bottom: 9px;
+    width: 4px;
+	position: absolute;
+}
+.change-vol{
+	background: url("../image/iconall.png") no-repeat -40px -250px;
+	width: 18px;
+    height: 20px;
+	/* 按钮必须变为块状元素才能显示 */
+	display: block;
+    position: absolute;
+    left: 7px;
+    bottom: 50%;
+}
+
+/* 音量控制  */
+.volumn{
+	width: 25px;
+	height: 25px;
+	background:url("../image/playbar.png") no-repeat -2px -248px;
+	float: left;
+	margin-top: 11px;
+	margin-left: 3px;
+	cursor: pointer;
+}
+.play-method{
+	width: 25px;
+	height: 25px;
+	background:url("../image/playbar.png") no-repeat -3px -344px;
+	float: left;
+	margin-top: 11px;
+}
+.plist{
+	width: 59px;
+	height: 25px;
+	background:url("../image/playbar.png") no-repeat -42px -68px;
+	float: left;
+	margin-top: 11px;
+}
+.num-warp{
+	width: 34px;
+	height: 17px;
+	text-align: center;
+	line-height: 17px;
+	float: right;
+	margin-top: 4px;
+	margin-right: 2px;
+	overflow: hidden;
+}
+.num{
+	color: #666;
+	font-size: 12px;
 }

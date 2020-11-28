@@ -119,4 +119,10 @@ public class UserMusicListDaoImpl implements UserMusicListDao{
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public int getLoveMusicListId(int userId) throws SQLException {
+		
+		return 0;
+	}
 }
