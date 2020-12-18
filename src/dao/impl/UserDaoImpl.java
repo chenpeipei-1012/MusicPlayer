@@ -15,23 +15,23 @@ import entity.User;
 public class UserDaoImpl implements UserDao{
 
 	@Override
-	public boolean modifyUserInfo(int userId,String nick,String gender,String desc,String pic,
-			String birthday,String iddress) throws SQLException {
+	public boolean modifyUserInfo(int userId,String nick,String gender,String desc,
+			String birthday,String iddress,String picPath) throws SQLException {
 		Connection conn = DBUtils.getConnection();
-		String sql = "update user set user_nick=?,user_gender=?,user_desc=?,user_pic=?,user_birthday=?,user_iddr=? " +
+		String sql = "update user set user_nick=?,user_gender=?,user_desc=?,user_birthday=?,user_iddr=?,user_pic = ? " +
 						"where user_id=?;";
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		
+		if("".equals(birthday))
+			birthday = null;
 		// 预准备Statement
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		// 给参数赋值
 		stmt.setString(1, nick);
 		stmt.setString(2, gender);
 		stmt.setString(3, desc);
-		stmt.setString(4, pic);
-		stmt.setString(5, birthday);
-		stmt.setString(6, iddress);
+		stmt.setString(4, birthday);
+		stmt.setString(5, iddress);
+		stmt.setString(6, picPath);
 		stmt.setInt(7, userId);
 		
 		// 执行SQL
@@ -97,7 +97,9 @@ public class UserDaoImpl implements UserDao{
 					result.getString("user_iddr"),
 					null);
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			user.setUserBirthday(dateFormat.format(result.getDate("user_birthday")));
+			Date date = result.getDate("user_birthday");
+			if(date != null)
+				user.setUserBirthday(dateFormat.format(date));
 		}
 		
 		

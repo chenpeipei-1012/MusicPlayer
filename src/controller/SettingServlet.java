@@ -3,8 +3,6 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,9 +23,6 @@ public class SettingServlet extends HttpServlet {
 		processRequest(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickName = request.getParameter("nickname");
 		String desc = request.getParameter("desc");
@@ -43,21 +38,23 @@ public class SettingServlet extends HttpServlet {
 		// 获取当前登录用户
 		int userId = 1;
 		UserDao userDao = new UserDaoImpl();
+		
+		boolean isSuccess = false;
 		try {
-			boolean isSuccess = userDao.modifyUserInfo(userId, nickName, gender, desc, pic, bir, iddr);
-			JSONObject json = new JSONObject();
-			json.put("isSuccess", isSuccess);
-			
-			out.print(json);
-			
-			// 把数据响应给AJAX
-			out.flush();
-	        out.close();
-			
+			 userDao.modifyUserInfo(userId, nickName, gender, desc, bir, iddr,pic);
+			 isSuccess = true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		JSONObject json = new JSONObject();
+		json.put("isSuccess", isSuccess);
+		
+		out.print(json);
+		
+		// 把数据响应给AJAX
+		out.flush();
+        out.close();
 	}
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException{
@@ -92,5 +89,4 @@ public class SettingServlet extends HttpServlet {
 		out.flush();
         out.close();
 	}
-
 }

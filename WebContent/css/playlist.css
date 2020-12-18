@@ -93,6 +93,7 @@
 	margin: 0;
 	padding: 0;
 	font-size: 13px;
+	width: 100%;
 }
 .selected{
 	background: #e6e6e6;
@@ -101,9 +102,11 @@
 	background: white;
 }
 .left-warp li{
-	height: 42px;
+	height: 54px;
 	padding: 6px 0 6px 20px;
 	cursor: pointer;
+	box-sizing: border-box;
+    width: 100%;
 }
 .left-item{
 	height: 100%;
@@ -118,6 +121,8 @@
 }
 .left-item-image{
 	float:left;
+	width: 40px;
+	height: 40px;
 }
 .left-item-text{
 	float:left;
@@ -129,11 +134,14 @@
 	height:20px;
 	font-size: 12px;
 	color: #000;
+	line-height: 20px;
 }
 .num-item{
 	font-size: 12px;
 	color: #999;
 	padding-top: 5px;
+	height: 15px;
+    line-height: 15px;
 }
 .content-right{
 	width:737px;
@@ -198,15 +206,6 @@
 	height: 35px;
 	padding-bottom: 20px;
 }
-button{
-	background-color: #3CA0ED;
-	color: white;
-	width: 75px;
-	height: 30px;
-	border: 0px;
-	border-radius: 5px;
-	cursor: pointer;
-}
 .t_operator{
 	height: 31px;
 }
@@ -220,6 +219,7 @@ button{
 .b_name_font{
 	font-size: 20px;
 	line-height: 32px;
+	color:#000;
 }
 .font-num{
 	color: #999;
@@ -284,3 +284,109 @@ thead{
 ::-webkit-scrollbar {
 	width:5px;
 }*/
+
+
+/* 提示 */
+.n-nmusic{
+	padding: 105px 0 105px 0;
+  		text-align: center;
+}
+.nonm-top{
+	padding-bottom: 38px;
+  		font-size: 18px;
+}
+.nonm-bottom{
+	color: #999;
+	font-size: 12px;
+}
+.icon-listen{
+	background: url(../image/icon.png) no-repeat 0 -347px;
+	display: inline-block;
+	width: 64px;
+	height: 50px;
+	margin-right: 17px;;
+}
+.non-listen-font{
+	display: inline-block;
+	position: relative;
+	bottom: 18px;
+	color: #000;
+}
+.icon-save{
+	background: url(../image/icon.png) no-repeat 0 -400px;
+	width: 16px;
+  		height: 14px;
+	margin: 0 9px 0 7px;
+	display: inline-block;
+}
+.link-font{
+	color: #0c73c2;
+}
+
+.list-play-non{
+	color: #bebebe;
+}
+.list-play-non i{
+	background: url(../image/button2.png) no-repeat 0 -891px;
+    width: 75px;
+    height: 31px;
+    border: 0px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.list-play-bg{
+	background: url(../image/button2.png) no-repeat 0 -387px;
+	color: white;
+	width: 75px;
+	height: 30px;
+	border: 0px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.list-play-icon{
+	background: url(../image/button2.png) no-repeat 0 -1622px;
+	float: left;
+    width: 20px;
+    height: 18px;
+    margin: 6px 2px 2px 6px;
+}
+.icon-font{
+	display: inline-block;
+    padding-top: 5px;
+    padding-left: 3px;
+}
+
+button{
+	background-color: #3CA0ED;
+	color: white;
+	width: 75px;
+	height: 30px;
+	border: 0px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.non-play-font{
+	position: relative;
+    left: 35px;
+    top: 5px;
+}
+
+.mlist-opr{
+	float:right;
+}
+.mlist-icon{
+	width: 13px;
+    height: 13px;
+	cursor: pointer;
+	display: inline-block;
+	padding-right: 5px;
+}
+.mlist-modify{
+	background: url("../image/icon.png") no-repeat 0 -270px;
+}
+.mlist-del{
+	background: url("../image/icon.png") no-repeat 0 -284px;
+}

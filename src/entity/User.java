@@ -15,7 +15,7 @@ public class User {
 	private String userBirthday;
 	
 	public User(){
-		
+		userBirthday = "";
 	}
 	
 	public User(int userId,String userName,String userGender,String userDesc,

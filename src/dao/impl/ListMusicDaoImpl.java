@@ -35,14 +35,15 @@ public class ListMusicDaoImpl implements ListMusicDao{
 		// 循环结果集
 		while(result.next()){
 			music = new Music();
+			music.setMusicId(result.getInt("music_id"));
 			music.setMusicName(result.getString("music_name"));
+			music.setMusicAuthor(result.getString("music_author"));
 			music.setMusicAlbumId(result.getInt("music_album_id"));
 			music.setMusicAlbum(result.getString("album_name"));
 			music.setMusicPath(result.getString("music_path"));
-			music.setMusicId(result.getInt("music_id"));
 			music.setMusicCreatedTime(result.getTimestamp("music_created_time"));
-			music.setMusicLyric(result.getString("music_lyric"));
-			music.setMusicAuthor(result.getString("music_author"));
+			music.setMusicLyricPath(result.getString("music_lyric_path"));
+			music.setMusicPic(result.getString("music_pic"));
 			
 			list.add(music);
 		}

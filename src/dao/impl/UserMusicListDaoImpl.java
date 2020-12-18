@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,30 +15,30 @@ import entity.UserMusicList;
 public class UserMusicListDaoImpl implements UserMusicListDao{
 
 	@Override
-	public boolean addMusicList(int userId, String listName) throws SQLException {
+	public int addMusicList(int userId, String listName) throws SQLException {
 		Connection conn = DBUtils.getConnection();
 		
 		String sql = "insert into user_musiclist(list_name,list_uid) values(?,?)";
 		
-//		// 得到系统当前时间
-//		long time = System.currentTimeMillis();
-//		Timestamp timestamp = new Timestamp(time);
-		
+		int id = -1;
 		// 预准备Statement
-		PreparedStatement stmt = conn.prepareStatement(sql);
+		PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 		
 		// 给参数赋值
 		stmt.setString(1, listName);
-		//stmt.setTimestamp(2, timestamp);
 		stmt.setInt(2, userId);
 		
 		// 执行SQL
-		boolean result = stmt.execute();
-		
+		stmt.executeUpdate();
+		ResultSet rs = stmt.getGeneratedKeys();
+
+		if (rs.next()) {
+            id = rs.getInt(1); 
+        }
 		// 关闭连接
 		DBUtils.closeConnection(conn);
 		
-		return result;
+		return id;
 	}
 
 	@Override
@@ -82,7 +83,18 @@ public class UserMusicListDaoImpl implements UserMusicListDao{
 		List<UserMusicList> list = new ArrayList<UserMusicList>();
 		
 		Connection conn = DBUtils.getConnection();
-		String sql = "select list_name,list_time from user_musiclist where list_uid = ?" ;
+		// String sql = "select * from user_musiclist where list_uid = ?" ;
+		String sql = "select * from user_musiclist t1 " + 
+						"LEFT JOIN " +
+						"(" + 
+						"select list_id,count(list_id) num from user_musiclist " +
+						"RIGHT JOIN list_music on list_id = lid " +
+						"where list_uid = ? " +
+						"GROUP BY list_id " +
+						") t2 " +
+						"on t1.list_id = t2.list_id";
+		
+		
 		
 		// 预准备Statement
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -96,8 +108,13 @@ public class UserMusicListDaoImpl implements UserMusicListDao{
 		// 循环结果集
 		while(result.next()){
 			musicList = new UserMusicList();
+			musicList.setListId(result.getInt("list_id"));
 			musicList.setListName(result.getString("list_name"));
 			musicList.setListTime(result.getTimestamp("list_time"));
+			musicList.setListUid(result.getInt("list_uid"));
+			musicList.setListLove(result.getInt("list_love"));
+			System.out.println("num:" + result.getInt("num"));
+			musicList.setMusicNum(result.getInt("num"));
 			
 			list.add(musicList);
 		}
@@ -110,10 +127,11 @@ public class UserMusicListDaoImpl implements UserMusicListDao{
 	public static void main(String args []){
 		UserMusicListDaoImpl impl = new UserMusicListDaoImpl();
 		try {
-			// impl.addMusicList(1, "歌单1");
+			impl.addMusicList(1, "歌单1");
 			// impl.deleteMusicList(3);
 			// impl.modifyMusicList(4, "歌单修改");
-			impl.queryMusicList(1);
+			//impl.queryMusicList(1);
+			//System.out.println(impl.getLoveMusicListId(1));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -122,7 +140,20 @@ public class UserMusicListDaoImpl implements UserMusicListDao{
 
 	@Override
 	public int getLoveMusicListId(int userId) throws SQLException {
+		int loveListId = -1;
+		Connection conn = DBUtils.getConnection();
 		
-		return 0;
+		String sql = "select list_id from user_musiclist where list_uid = ? and list_love = 1;";
+		// 预准备Statement
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		// 给参数赋值
+		stmt.setInt(1, userId);
+		
+		ResultSet result = stmt.executeQuery();
+		if(result.next()){
+			loveListId = result.getInt("list_id");
+		}
+		
+		return loveListId;
 	}
 }

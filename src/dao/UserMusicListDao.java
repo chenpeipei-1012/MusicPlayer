@@ -8,7 +8,7 @@ import entity.UserMusicList;
 public interface UserMusicListDao {
 
 	// Ìí¼Ó¸èµ¥
-	public boolean addMusicList(int userId,String listName) throws SQLException;
+	public int addMusicList(int userId,String listName) throws SQLException;
 	
 	// É¾³ý¸èµ¥
 	public boolean deleteMusicList(int listId) throws SQLException;

@@ -117,12 +117,67 @@ font-family: Arial, Helvetica, sans-serif;
 	opacity:.8;   /* 不透明度 */
 }
 
-
-
 .ml-tips{
 	color: #999;
 }
 .cancel{
 	color: #333;
     background: #e2e2e2;
+}
+
+
+/* 确认删除弹窗*/
+.but-1{
+	display: inline-block;
+    float: left;
+    padding-right: 20px;
+    text-align: center;
+}
+.but-icon1{
+	background: url(../image/button2.png) no-repeat 0 -387px;
+    color: white;
+    width: 75px;
+    height: 30px;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    /* text-align: center; */
+    font-style: normal;
+}
+.but-2{
+    display: inline-block;
+    float: left;
+    font-size: 12px;
+    color: #333;
+    height: 30px;
+    width: 75px;
+    border: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #e2e2e2;
+    background: #e2e2e2;
+}
+
+
+/* 删除 */
+.p-del{
+	height: 201px;
+}
+.pc-del{
+	height: 163px;
+}
+.ptw-del{
+	text-align: center;
+    margin-right: 30px;
+}
+.del-tips{
+	text-align: center;
+    font-size: 14px;
+}
+.bw-del{
+	text-align: center;
+    width: 190px;
+    margin: auto;
+    padding-top: 20px;
 }

@@ -12,7 +12,9 @@
 			<div class="play noplay-btn"></div>
 			<div class="next next-out"></div>
 		</div>
-		<div class="head-pic"></div>
+		<div class="head-pic" id="head-pic">
+			<img id="music-pic" src="/MusicPlayer/image/default_album.jpg"/>
+		</div>
 		<div class="play-bar">
 			<div class="words"></div>
 			<div class="m-pbar">
@@ -48,7 +50,34 @@
 			<div class="play-method"></div>
 			<div class="plist">
 				<div class="num-warp">
-					<span class="num">0</span>
+					<span class="num" id="curlistnum">0</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="g_playlist">
+		<div class="g_playlist_wrap">
+			<div class="listhd">
+				<div class="listhd-wrap">
+					<h4>播放列表(
+						<span class="list-num">0</span>
+						)
+					</h4>
+					<div class="listhd-right">
+						<p class="music-name"></p>
+						<span class="close-list-img"></span>
+					</div>
+				</div>
+			</div>
+			<div class="listbd">
+				<div class="listbd-left">
+					<ul id="tobeplay">
+					</ul>
+				</div>
+				<div class="listbd-right">
+					<div class="listbd-right-wrap" id="lyric">
+
+					</div>
 				</div>
 			</div>
 		</div>

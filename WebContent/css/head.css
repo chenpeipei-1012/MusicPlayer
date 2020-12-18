@@ -55,6 +55,10 @@
 	/* li标签中的元素垂直居中: 设置行高 */
 	line-height: 70px;
 }
+a{
+	color: white; 
+	font-size: 14px;
+}
 .swrap{
 	height: 32px;
 	width: 158px;
@@ -137,6 +141,10 @@
 	/* li的默认样式是列表显示，需改为块状元素显示 */
 	display: block;
 	text-align: left;
+	background: #2b2b2b;
+}
+.login{
+	font-size: 12px;
 }
 .set{
 	background: url("../image/toplist.png") no-repeat 0 -140px;

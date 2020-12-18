@@ -8,6 +8,25 @@ public class UserMusicList {
 	private String listName;
 	private Timestamp listTime;
 	private int listUid;
+	private int listLove;
+	
+	// 歌单中拥有的歌曲数量
+	private int musicNum;
+	
+	public UserMusicList(){
+		this.musicNum = 0;
+	}
+	
+	public UserMusicList(int listId,String listName,Timestamp listTime,int listUid,int listLove
+			,int musicNum){
+		this.listId = listId;
+		this.listName = listName;
+		this.listTime = listTime;
+		this.listUid = listUid;
+		this.listLove = listLove;
+		this.musicNum = musicNum;
+	}
+	
 	public int getListId() {
 		return listId;
 	}
@@ -38,4 +57,22 @@ public class UserMusicList {
 	public void setListUid(int listUid) {
 		this.listUid = listUid;
 	}
+	
+	public int getListLove() {
+		return listLove;
+	}
+	
+	public void setListLove(int list_love) {
+		this.listLove = list_love;
+	}
+	
+	public int getMusicNum() {
+		return musicNum;
+	}
+	
+	public void setMusicNum(int musicNum) {
+		this.musicNum = musicNum;
+	}
+	
+	
 }

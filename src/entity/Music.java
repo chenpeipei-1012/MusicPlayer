@@ -11,7 +11,9 @@ public class Music {
 	private String musicAlbum;
 	private String musicPath;
 	private Timestamp musicCreatedTime;
-	private String musicLyric;
+	private String musicLyricPath;
+	private String musicPic;
+	private int musicTypeId;
 	
 	public int getMusicId() {
 		return musicId;
@@ -60,14 +62,6 @@ public class Music {
 	public void setMusicCreatedTime(Timestamp musicCreatedTime) {
 		this.musicCreatedTime = musicCreatedTime;
 	}
-	
-	public String getMusicLyric() {
-		return musicLyric;
-	}
-	
-	public void setMusicLyric(String musicLyric) {
-		this.musicLyric = musicLyric;
-	}
 
 	public String getMusicAlbum() {
 		return musicAlbum;
@@ -76,5 +70,28 @@ public class Music {
 	public void setMusicAlbum(String musicAlbum) {
 		this.musicAlbum = musicAlbum;
 	}
-	
+
+	public String getMusicLyricPath() {
+		return musicLyricPath;
+	}
+
+	public void setMusicLyricPath(String musicLyricPath) {
+		this.musicLyricPath = musicLyricPath;
+	}
+
+	public String getMusicPic() {
+		return musicPic;
+	}
+
+	public void setMusicPic(String musicPic) {
+		this.musicPic = musicPic;
+	}
+
+	public int getMusicTypeId() {
+		return musicTypeId;
+	}
+
+	public void setMusicTypeId(int musicTypeId) {
+		this.musicTypeId = musicTypeId;
+	}
 }

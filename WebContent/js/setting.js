@@ -1,3 +1,4 @@
+var user;
 // 页面加载时绑定事件
 bindEvent();
 // 初始化页面中的部分元素
@@ -292,6 +293,12 @@ function modifyUserInfo(){
     if($("#province").text() != "---"){
     	iddr += $("#province").text() + " " +$("#city").text() ;
     }
+    
+    // 头像
+    var picPath = $("#update-upic")[0].src;
+    // http://localhost:8080/MusicPlayer/musicClou
+    picPath = picPath.substring(picPath.indexOf("musicCloud"));
+    
     // AJAX提交数据
     $.ajax({
         type : "POST",
@@ -302,11 +309,26 @@ function modifyUserInfo(){
         	  "desc":$("#introduce").val(),
         	  "gender":$("[name='gender']").val(),
         	  "bir":bir,
-        	  "iddr":iddr,},
+        	  "iddr":iddr,
+        	  "pic":picPath,
+        	  },
         success : function(result) {
+        	var tips = "";
+        	tips += '<div class="tips" id="tips">';
         	if(result.isSuccess){
-        		
+        		tips += ' <i class="tip-icon-success"></i>' +
+							'<span class="tip-info">保存成功</span>' +
+						'</div>' ;
+        	}else{
+        		tips += ' <i class="tip-icon-error"></i>' +
+							'<span class="tip-info">保存失败</span>' +
+						'</div>' ;
         	}
+        	$("#tips").remove();
+        	$("#set").append(tips);
+        	setTimeout(function(){
+        		$("#tips").remove();
+        	},3000);
         },
         error : function(errorMsg) {
             //请求失败时执行该函数
@@ -319,14 +341,71 @@ function modifyUserInfo(){
 
 // 进入更换头像页面
 function changePic(){
-	$("#set").hide();
-	$("#pic").show();
+//	$("#set").hide();
+//	$("#pic").show();
+//	
+//	$("#big-pic").attr("src","/MusicPlayer/" + user.userPic);
+//	$("#small-pic").attr("src","/MusicPlayer/" + user.userPic);
+	
+	// 触发file的点击事件
+	
+}
+
+$("#change-pic").click(function(){
+	// trigger() 方法触发被选元素上指定的事件以及事件的默认行为
+	$("#picfile").trigger("click");
+	
+
+	
+});
+
+$("#picfile").change(function(){
+	// 上传服务器处理
+	// 用form提交（模拟ajax） ajax不能上传文件
+	var formData = new FormData();
+	// 获取文件
+	var file = document.getElementById('picfile').files[0];
+	formData.append("file",file);
+	$.ajax({
+	    type : "POST",
+	    async : true,         
+	    url : "/MusicPlayer/uploadPhoto",    
+	    dataType : "json",        //返回数据形式为json
+	    cache: false,   //上传文件不需要缓存
+        contentType: false,  //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+        processData: false,  //需设置为false。因为data值是FormData对象，不需要对数据做处理
+        data:formData,
+	    success : function(result) {
+	    	if(result.picPath == ""){
+	    		// 
+	    		alert("浏览头像失败!");
+	    		return;
+	    	}
+	    	
+	    	$("#update-upic").attr("src","/MusicPlayer/" + result.picPath);
+	    },
+	    error : function(errorMsg) {
+	        //请求失败时执行该函数
+	        alert("请求数据失败!");
+	    }
+	});
+});
+
+function uploadPic(file){
+	 var path = file.value;
+	 //path = "/imgs/" + path.substring(3);
+	 //$("#preview-pic").attr("src",path);
+	 
+    //path=document.forms[0].FileUpload.value;  
 }
 
 // 返回个人设置页面
 function backSet(){
 	$("#set").show();
 	$("#pic").hide();
+}
+
+function savePic(){
 }
 
 
@@ -337,7 +416,7 @@ $.ajax({
     dataType : "json",        //返回数据形式为json
     success : function(result) {
         //请求成功时执行该函数内容，result即为服务器返回的json对象
-    	var user = result.user;
+    	user = result.user;
         $("#username").val(user.userNick);
         $("#introduce").val(user.userDesc);
         
@@ -363,6 +442,9 @@ $.ajax({
             $("#province").text(iddrArr[0]);
             $("#city").text(iddrArr[1]);
         }
+        
+        // 头像的显示
+        $("#update-upic").attr("src","/MusicPlayer/" + user.userPic);
     },
     error : function(errorMsg) {
         //请求失败时执行该函数
