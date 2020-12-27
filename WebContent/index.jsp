@@ -10,37 +10,17 @@
 	<link type="text/css" rel="styleSheet"  href="css/head.css" />
 	<link type="text/css" rel="styleSheet"  href="css/foot.css"/>
 	<link type="text/css" rel="styleSheet"  href="css/footer.css"/>
+	<link type="text/css" rel="styleSheet"  href="css/pop.css"/>
 	<style>
-		/* 内容样式 */
-		*{
-			/*color: white; 
-			font-size: 14px;*/
-			margin: 0;
-			padding: 0;
-			text-decoration: none;
-			outline: none;
-			font-style: normal;
-		}
-		html,body{
-			width:100%;
-			height:100%;
-			/* 清除body自带的8px的外边距 */
-			margin: 0;
-		}
-		body{
-			overflow: hidden;
-			box-sizing: border-box;
-			padding-top: 75px;
-			padding-bottom: 67px;
-			background-color: #f2f2f2;
-		}
+		
 	</style>
 </head>
 <body>
 	<div class="head">
-		<%@ include file="../header.html"%>
+		<%@ include file="../header.jsp"%>
 	</div> 
 	<div class="content">
+		<div id="container">
 		 <!-- 滚动图片 -->
 	    <div class="banner">
 	        <div class="img-banner">
@@ -461,13 +441,20 @@
     </div>
 
 	</div>
+	</div>
+	
+	
 	<div class="foot">
 		<%@ include file="../foot.html"%>
 	</div>
+	
+	<div id="pop-content"></div>
+	
 	
 	<script src="js/jquery-1.8.3.js"></script>
 	<script src="js/head.js"></script>
 	<script src="js/foot.js"></script>
 	<script src="js/index.js"></script>
+	<script src="js/pop.js"></script>
 </body>
 </html>

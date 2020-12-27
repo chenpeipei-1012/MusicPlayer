@@ -195,6 +195,7 @@
 }
 .like-out{
 	background-position: -88px -163px;
+	cursor: pointer;
 }
 
 .share{
@@ -364,7 +365,7 @@
 .listbd-right{
 	float: left;
     width: 43.8%;
-    height: 219px;
+    height: 220px;
     overflow-y: auto;
     margin-top: 20px;
     text-align: center;
@@ -421,12 +422,13 @@
 .icons{
 	
 }
-.icon-save{
+.icons .icon-save{
 	background: url("../image/playlist.png") no-repeat -24px 0;
 	width: 16px;
 	height: 16px;
 	display: inline-block;
 	margin: 7px 0 0 10px;
+	cursor: pointer;
 }
 .icon-download{
 	background: url("../image/playlist.png") no-repeat -57px -50px;
@@ -434,6 +436,7 @@
 	height: 16px;
 	display: inline-block;
 	margin: 7px 0 0 10px;
+	cursor: pointer;
 }
 .icon-delete{
 	background: url("../image/playlist.png") no-repeat -51px 0;
@@ -441,6 +444,7 @@
 	height: 16px;
 	display: inline-block;
 	margin: 7px 0 0 10px;
+	cursor: pointer;
 }
 
 .list-mauthor-name{
@@ -462,6 +466,7 @@
 	height:100%;
 	width: 37px;
     padding-left: 6px;
+    cursor: pointer;
 }
 
 .list-share span{
@@ -473,10 +478,7 @@
     position: relative;
     top: 6px;
 }
-.listbd-right-wrap p{
-	color: #989898;
-    font-size: 12px;
-}
+
 .listbd-right-wrap{
 	float: left;
 	height: 220px;
@@ -517,6 +519,12 @@
 }
 .p-item{
 	line-height: 30px;
+	color: #989898;
+    font-size: 12px;
+}
+
+.listbd-right-wrap p{
+	
 }
 
 /**/
@@ -539,4 +547,10 @@
 	width: 36px;
 	height: 29px;
 	padding-right: 5px;
+}
+
+/**/
+.lyric-seleted{
+	color: #fff;
+	font-size: 14px;
 }

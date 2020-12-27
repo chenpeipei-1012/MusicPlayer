@@ -37,7 +37,7 @@
 
 <body style="overflow-y: hidden;">
 	<div class="head">
-	<%@ include file="../header.html"%>
+	<%@ include file="../header.jsp"%>
 	</div>
 	<div class="content">
 		<div id="container">
@@ -94,9 +94,16 @@
 									<h2 id="r-mlistname"></h2>
 								</div>
 								<div class="t_user">
-									<img src="/MusicPlayer/image/picture.jpg"/>
-									<span class="font">super_佩</span>
-									<span class="font" id="created-time">2020-10-12</span>
+									<% User curUser =(User)session.getAttribute("user");
+									   String userName = "";
+									   String userPic = "/MusicPlayer/image/picture.jpg";
+									   if(curUser != null){ 
+										   userName = curUser.getUserName();
+										   userPic = "/MusicPlayer/" + curUser.getUserPic();
+									   }%>
+									<img src=<%=userPic %> >
+									<span class="font" id="ml-username"><%=userName %></span>
+									<span class="font" id="created-time"></span>
 									<span class="font">创建</span>
 								</div>
 								<div class="t_operator">
@@ -145,6 +152,7 @@
     <script src="/MusicPlayer/js/head.js"></script>
 	<script src="/MusicPlayer/js/foot.js"></script>
 	<script src="/MusicPlayer/js/playlist.js"></script>
+	<script src="/MusicPlayer/js/pop.js"></script>
 
 </body>
 </html>

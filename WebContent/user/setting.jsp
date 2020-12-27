@@ -33,7 +33,7 @@
 </head>
 <body>
 	<div class="head">
-		<%@ include file="../header.html"%>
+		<%@ include file="../header.jsp"%>
 	</div>
 	<!-- <div class="set-content"> -->
 		<div class="content">
@@ -131,10 +131,13 @@
 		<%@ include file="../foot.html"%>
 	</div>
 	
+	<div id="pop-content"></div>
+	
 	<script src="../js/jquery-1.8.3.js"></script>
 	<script src="../js/areaLocation.js"></script>
 	<script src="../js/head.js"></script>
 	<script src="../js/foot.js"></script>
 	<script src="../js/setting.js"></script>
+	<script src="../js/pop.js"></script>
 </body>
 </html>

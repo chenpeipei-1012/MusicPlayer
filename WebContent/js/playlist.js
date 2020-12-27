@@ -6,6 +6,22 @@ var errorSpan = document.getElementById("error-msg");
 var musiclistArr;
 var playlistArr;
 
+
+initMyMusicPage();
+
+function initMyMusicPage(){
+	// 其他的颜色
+	$("#find").css("background","#242424");
+	$("#mymusic").css("background","#000");
+	
+	// 去掉我的音乐的悬浮事件
+	$("#mymusic").unbind("mouseout");
+	$("#find").mouseout(function(){
+		this.style.backgroundColor = "#242424";
+	});
+}
+
+
 function playList(result) {
     // 请求成功时执行该函数内容，result即为服务器返回的json对象
     // 填充数据: 先填充左侧歌单
@@ -25,6 +41,13 @@ function fillMusicListInfo(curList){
 	
 	$("#r-mlistname").empty();
 	$("#r-mlistname").append(curList.listName);
+	
+	// 头像
+	
+	
+	// 用户名
+//	$("#ml-username").empty();
+//	$("#ml-username").append();
 	
 	// 日期输出格式：2020-10-12
 	var day = date.getDay();
@@ -108,6 +131,7 @@ function fillLeftListData(playlistArr){
 	var content = "";
 	var listType;
 	var curList;
+	var picPath = "";
 	
     for(var i=0;i<playlistArr.length;i++){
     	listType = playlistArr[i].listLove;
@@ -138,6 +162,12 @@ function fillLeftListData(playlistArr){
     	// 如果该歌单中没有歌曲，则采用默认的头像
     	if(playlistArr[i].musicNum == 0){
     		content += '<img src="/MusicPlayer/image/default_list_Pic.jpg">';
+    	}else{
+    		// 
+    		if(listType == 0){
+    			picPath = "/MusicPlayer/" + playlistArr[i].listPic;
+    			content += '<img src="' + picPath + '">';
+    		}
     	}
     	
     	
@@ -200,7 +230,7 @@ function fillMusicListData(musiclistArr){
 							  '<img src="/MusicPlayer/image/play.png"/>' + 
 						  '</td>' + 
 						  '<td class="w3">' + musiclistArr[i].musicName + '</td>' + 
-						  '<td class="w4">03:36</td>' + 
+						  '<td class="w4">' + musiclistArr[i].musicDuration + '</td>' + 
 						  '<td class="w5">' + musiclistArr[i].musicAuthor + '</td>' + 
 						  '<td class="w6">' + musiclistArr[i].musicAlbum + '</td>' + 
 					'</tr>'
@@ -235,7 +265,7 @@ function fillMusicListData(musiclistArr){
 $.ajax({
     type : "GET",
     async : true,         
-    url : "/MusicPlayer/playlist",    
+    url : "/MusicPlayer/user/playlist",    
     dataType : "json",        //返回数据形式为json
     
     success : function(result) {
@@ -300,17 +330,6 @@ function choiceMusicList(musiclist){
 	refreshMusicList(playlistArr[index]);
 }
 
-// 找到musiclist.id对应的下标
-function findMusicListIndex(id,arr){
-	for(var i=0;i<arr.length;i++){
-		if(arr[i].musicId == id){
-			return i;
-		}
-	}
-	
-	return -1;
-}
-
 //function findCurListIndex(id){
 //	// 找到musiclist.id对应的下标
 //	for(var i=0;i<musicList.length;i++){
@@ -341,9 +360,10 @@ function refreshMusicList(curList){
     		picPath = "/MusicPlayer/image/default_save_pic.png"
     	}else{
     		// 根据该歌单是否有歌曲，决定头像
-//    		if(){
-//    			
-//    		}
+    		if(curList.musicNum != 0){
+    			// 有歌
+    			picPath = "/MusicPlayer/" + curList.listPic;
+    		}
     	}
 	
 	$("#musiclist-pic").attr("src", picPath);
@@ -360,7 +380,7 @@ function refreshMusicList(curList){
 	$.ajax({
 	    type : "GET",
 	    async : true,         
-	    url : "/MusicPlayer/playlist?id=" + curList.listId,    
+	    url : "/MusicPlayer/user/playlist?id=" + curList.listId,    
 	    dataType : "json",        //返回数据形式为json
 	    
 	    success : function(result) {
@@ -382,15 +402,10 @@ function refreshMusicList(curList){
 function createNewMList(){
 	
 	// 加载弹窗
-	$("#pop-content").load("/MusicPlayer/user/popWindows.html #createNewMusicListPop",function(){
-		var ss = "";
+	$("#pop-content").load("/MusicPlayer/popWindows.html #createNewMusicListPop",function(){
+		
 	});
-	
-//	popBg.style.display = "block";
-//	pop.style.display = "block";
 }
-
-
 
 // 添加新歌单后的页面
 function addNewMusicList(curList){
@@ -410,7 +425,7 @@ function addNewMusicList(curList){
 						'<div class="desc-item">' + curList.listName + '</div>' +
 						'<div class="num-item">0首' +
 							'<div class="mlist-opr" id="op-' + curList.listId +'">' +
-								'<i class="mlist-modify mlist-icon" onclick="popModifyWindows(this)></i>' +
+								'<i class="mlist-modify mlist-icon" onclick="popModifyWindows(this)"></i>' +
 								'<i class="mlist-del mlist-icon" onclick="popDeleteWindows(this)"></i>' +
 							'</div>' +
 						'</div>' +
@@ -477,26 +492,36 @@ function createMList(){
 	    $.ajax({
 	        type : "POST",
 	        async : true,         
-	        url : "/MusicPlayer/playlist",    
+	        url : "/MusicPlayer/user/playlist",    
 	        dataType : "json",        //返回数据形式为json
 	        data:{
 	        	  "listname":$("#listname").val()
                  },
 	        success : function(result) {
+	        	var tipMsg = ""
 	        	if(result.isSuccess){
 	        		
-	        		// 加入playlistArr
-	        		playlistArr.push(result.curList);
-	        		
-	        		// 左侧添加新的歌单
-	        		addNewMusicList(result.curList);
+		        	var curPage = window.location.href;
+		        	if(curPage.indexOf("playlist") != -1 ){
+		        		// playlist页面
+		        		// 加入playlistArr
+		        		playlistArr.push(result.curList);
+		        		
+		        		// 左侧添加新的歌单
+		        		addNewMusicList(result.curList);
 
-	        		// 刷新右侧数据   
-	        		refreshMusicList(result.curList);
-	        		history.pushState(null,null,"/MusicPlayer/user/playlist?id=" + result.curList.listId);
+		        		// 刷新右侧数据   
+		        		refreshMusicList(result.curList);
+		        		history.pushState(null,null,"/MusicPlayer/user/playlist?id=" + result.curList.listId);
+		        	}
+		        	
+		        	// 提示信息
+		        	tipMsg = "新增歌单成功";
 	        	}else{
-	        		// 添加失败
+	        		tipMsg = "新增歌单失败";
 	        	}
+	        	
+	        	popTips(result.isSuccess,tipMsg);
 	        },
 	        error : function(errorMsg) {
 	            // 添加失败
@@ -523,7 +548,7 @@ function deleteMList(id){
 	$.ajax({
 	    type : "DELETE",
 	    async : true,         
-	    url : "/MusicPlayer/playlist?id=" + id,    
+	    url : "/MusicPlayer/user/playlist?id=" + id,    
 	    dataType : "json",        //返回数据形式为json
 	    success : function(result) {
 	    	if(result.isSuccess){
@@ -580,10 +605,69 @@ function popDeleteWindows(curEle){
 	
 	// 显示弹窗
 	// 加载弹窗
-	$("#pop-content").load("/MusicPlayer/user/popWindows.html #deleteMusicListPop",function(){
+	$("#pop-content").load("/MusicPlayer/popWindows.html #deleteMusicListPop",function(){
 
 		$("#delmlist").click(function(){
 			deleteMList(id);
+		});
+	});
+	
+}
+
+// 修改歌单名
+function popModifyWindows(curEle){
+	var event = this.event;
+	event.stopPropagation();
+	
+	var id = curEle.parentNode.id;
+	id = id.substring(id.lastIndexOf("-")+1);
+	
+	var index = findListIndex(id);
+	var list = playlistArr[index]
+	// 显示弹窗
+	$("#pop-content").load("/MusicPlayer/popWindows.html #updateMusicListPop",function(){
+		// 回显歌单名
+		$("#listname").val(list.listName);
+		
+		$("#updateml").click(function(){
+			// 合法性检查
+//			if(){
+//				
+//			}
+			var listName = $("#listname").val();
+			var url =  "/MusicPlayer/user/playlist?id="+id+"&listName="+listName;
+			
+			// 保存
+			$.ajax({
+			    type : "PUT",  // 更新数据
+			    async : true,         
+			    url : url,  
+			    dataType : "json",        //返回数据形式为json
+			    success : function(result) {
+			    	
+			    	var tipMsg = "";
+		        	if(result.isSuccess){
+		        		// 提示: 
+		        		tipMsg = "修改成功";
+		        		// 更新右侧歌单名称
+		        		$("#"+id + " .desc-item").empty();
+		        		$("#"+id + " .desc-item").append(listName);
+		        		
+		        		
+		        		// 更新数组
+		        		var index = findListIndex(id);
+		        		playlistArr[index].listName = listName;
+		        	}else{
+		        		// 提示：
+		        		tipMsg = "修改失败";
+		        	}
+			    	
+			    	popTips(result.isSuccess,tipMsg);
+			    },
+			    error : function(errorMsg) {
+			        alert("请求数据失败!");
+			    }
+			});
 		});
 	});
 	

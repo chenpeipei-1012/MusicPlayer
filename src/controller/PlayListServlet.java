@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 import dao.ListMusicDao;
@@ -18,6 +19,7 @@ import dao.UserMusicListDao;
 import dao.impl.ListMusicDaoImpl;
 import dao.impl.UserMusicListDaoImpl;
 import entity.Music;
+import entity.User;
 import entity.UserMusicList;
 
 /**
@@ -47,44 +49,52 @@ public class PlayListServlet extends HttpServlet {
 		
 		String listName = request.getParameter("listname");
 		// 先固定用户
-		int userId = 1;
+		
+		// Session 中取用户
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		
+		int userId = user.getUserId();
 		UserMusicListDao userMusicListDao = new UserMusicListDaoImpl();
 		try {
+			System.out.println("增加歌单");
 			listId = userMusicListDao.addMusicList(userId,listName);
 			isSuccess = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally{
+			Timestamp curTime = new Timestamp(System.currentTimeMillis()); 
+			UserMusicList curList = new UserMusicList(listId,listName,curTime,userId,0,0);
+			
+			// JSON对象
+			JSONObject json = new JSONObject();
+			json.put("isSuccess", isSuccess);
+			json.put("curList", curList);
+			
+			out.print(json);
+			
+			// 把数据响应给AJAX
+			out.flush();
+	        out.close();
 		}
-		
-		// listId,String listName,Timestamp listTime,int listUid,int listLove
-		Timestamp curTime = new Timestamp(System.currentTimeMillis()); 
-		UserMusicList curList = new UserMusicList(listId,listName,curTime,userId,0,0);
-		
-		// JSON对象
-		JSONObject json = new JSONObject();
-		json.put("isSuccess", isSuccess);
-		json.put("curList", curList);
-		
-		out.print(json);
-		
-		// 把数据响应给AJAX
-		out.flush();
-        out.close();
 	}
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		// 从Session会话对象中获取当前登录用户
 		String id = request.getParameter("id");
 		
-		System.out.println("id : " + id);
-		int listId = -1;//Integer.parseInt(request.getParameter("id"));
+		int listId = -1;
 
 		// 根据头信息判断是AJAX请求还是URL请求
 		String header = request.getHeader("X-Requested-With");
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		// 先固定用户查询
-		int userId = 1;
+
+		// Session 中取用户
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+
+		int userId = user.getUserId();
 		
 		// 音乐列表
 		ListMusicDao listMusicDao = new ListMusicDaoImpl();
@@ -98,7 +108,6 @@ public class PlayListServlet extends HttpServlet {
 			// 查询所有歌单信息
 			userMusicList = userMusicListDao.queryMusicList(1);
 			// 得到该用户的喜欢歌单列表ID
-			
 			
 			// 查询我喜欢的音乐：根据歌单ID得到歌曲列表
 			if(id == null){
@@ -137,8 +146,6 @@ public class PlayListServlet extends HttpServlet {
 			 	throws ServletException, IOException {
 		 boolean isSuccess = false;
 		 String id = request.getParameter("id");
-
-		 System.out.println("delete id:" + id);
 		 
 		 UserMusicListDao userMusicListDao = new UserMusicListDaoImpl();
 		 try {
@@ -148,18 +155,50 @@ public class PlayListServlet extends HttpServlet {
 			e.printStackTrace();
 		 } catch (SQLException e) {
 			e.printStackTrace();
+		 } finally{
+			 response.setContentType("application/json; charset=utf-8");
+			 PrintWriter out = response.getWriter();
+			 
+			 // JSON对象
+			 JSONObject json = new JSONObject();
+			 json.put("isSuccess", isSuccess);
+			 out.print(json);
+			 
+			 // 把数据响应给AJAX
+			 out.flush();
+			 out.close();
 		 }
+
+	 }
+
+	 protected void doPut(HttpServletRequest request, HttpServletResponse response)
+			 throws ServletException, IOException{
+		 String listId = request.getParameter("id");
+		 String listName = request.getParameter("listName");
 		 
 		 response.setContentType("application/json; charset=utf-8");
 		 PrintWriter out = response.getWriter();
 		 
-		 // JSON对象
-		 JSONObject json = new JSONObject();
-		 json.put("isSuccess", isSuccess);
-		 out.print(json);
-			
-		 // 把数据响应给AJAX
-		 out.flush();
+		 boolean isSuccess = false;
+		 
+		 UserMusicListDao userMusicListDao = new UserMusicListDaoImpl();
+		 try {
+			userMusicListDao.modifyMusicList(Integer.parseInt(listId), listName);
+			isSuccess = true;
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			// JSON对象
+			 JSONObject json = new JSONObject();
+			 json.put("isSuccess", isSuccess);
+			 out.print(json);
+				
+			 // 把数据响应给AJAX
+			 out.flush();
+			 out.close();
+		}
 	 }
-
+	 
 }

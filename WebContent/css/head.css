@@ -101,6 +101,7 @@ a{
 	/* 在层中水平居中 */
 	margin: auto;
 	margin-top: 10px;
+	background-size: cover;
 }
 /* 几种字体颜色 */
 .fcolor{

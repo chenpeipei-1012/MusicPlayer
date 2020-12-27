@@ -83,18 +83,15 @@ public class UserMusicListDaoImpl implements UserMusicListDao{
 		List<UserMusicList> list = new ArrayList<UserMusicList>();
 		
 		Connection conn = DBUtils.getConnection();
-		// String sql = "select * from user_musiclist where list_uid = ?" ;
-		String sql = "select * from user_musiclist t1 " + 
-						"LEFT JOIN " +
-						"(" + 
-						"select list_id,count(list_id) num from user_musiclist " +
-						"RIGHT JOIN list_music on list_id = lid " +
+
+		String sql = "select list_id,list_name,list_time,list_uid,list_love,num,music_pic from " +
+						"(select *,count(lid) num, max(save_time) time from user_musiclist " + 
+						"LEFT JOIN list_music on list_id = lid " +
 						"where list_uid = ? " +
 						"GROUP BY list_id " +
-						") t2 " +
-						"on t1.list_id = t2.list_id";
-		
-		
+						") lm " +
+					"left join music m on m.music_id = mid;";
+
 		
 		// Ô¤×¼±¸Statement
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -113,11 +110,12 @@ public class UserMusicListDaoImpl implements UserMusicListDao{
 			musicList.setListTime(result.getTimestamp("list_time"));
 			musicList.setListUid(result.getInt("list_uid"));
 			musicList.setListLove(result.getInt("list_love"));
-			System.out.println("num:" + result.getInt("num"));
 			musicList.setMusicNum(result.getInt("num"));
+			musicList.setListPic(result.getString("music_pic"));
 			
 			list.add(musicList);
 		}
+		
 		DBUtils.closeConnection(conn);
 		
 		return list;

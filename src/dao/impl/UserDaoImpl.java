@@ -9,7 +9,6 @@ import java.util.Date;
 
 import util.DBUtils;
 import dao.UserDao;
-import entity.Music;
 import entity.User;
 
 public class UserDaoImpl implements UserDao{
@@ -95,13 +94,50 @@ public class UserDaoImpl implements UserDao{
 					result.getString("user_pic"),
 					result.getString("user_nick"),
 					result.getString("user_iddr"),
-					null);
+					null,
+					result.getInt("user_type"));
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = result.getDate("user_birthday");
 			if(date != null)
 				user.setUserBirthday(dateFormat.format(date));
 		}
 		
+		// 关闭连接
+		DBUtils.closeConnection(conn);
+		
+		return user;
+	}
+
+	@Override
+	public User queryUserInfoByName(String userName) throws SQLException {
+		Connection conn = DBUtils.getConnection();
+		String sql = "select * from user where user_name = ?";
+		
+		// 预准备Statement
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		// 给参数赋值
+		stmt.setString(1, userName);
+		
+		// 执行SQL
+		ResultSet result = stmt.executeQuery();
+		User user = null;
+		if(result.next()){
+			user = new User(result.getInt("user_id"),
+					result.getString("user_name"),
+					result.getString("user_gender"),
+					result.getString("user_desc"),
+					result.getString("user_pic"),
+					result.getString("user_nick"),
+					result.getString("user_iddr"),
+					null,
+					result.getInt("user_type"));
+			
+			user.setUserPwd(result.getString("user_pwd"));
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = result.getDate("user_birthday");
+			if(date != null)
+				user.setUserBirthday(dateFormat.format(date));
+		}
 		
 		// 关闭连接
 		DBUtils.closeConnection(conn);

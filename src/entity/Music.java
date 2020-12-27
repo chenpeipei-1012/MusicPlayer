@@ -15,6 +15,9 @@ public class Music {
 	private String musicPic;
 	private int musicTypeId;
 	
+	// Ê±³¤
+	private String musicDuration;
+	
 	public int getMusicId() {
 		return musicId;
 	}
@@ -93,5 +96,13 @@ public class Music {
 
 	public void setMusicTypeId(int musicTypeId) {
 		this.musicTypeId = musicTypeId;
+	}
+
+	public String getMusicDuration() {
+		return musicDuration;
+	}
+
+	public void setMusicDuration(String musicDuration) {
+		this.musicDuration = musicDuration;
 	}
 }

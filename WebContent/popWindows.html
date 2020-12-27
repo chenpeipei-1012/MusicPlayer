@@ -70,5 +70,63 @@
 		</div>
 	</div>
 	
+	<div id="saveToMusicList">
+		<div id="pop-bg" class="pop-bg"></div>
+		<div id="pop" class="pop p-del">
+			<div class="pop-head">
+				<span>添加到歌单</span>
+				<img src="/MusicPlayer/image/close_pop.png" onClick="cancelMList()" />
+			</div>
+			<div class="pop-content pc-del">
+				<div class="pop-content-wrap ptw-del">
+					<div class="music-list-name del-tips">
+						<p>确定删除歌单?</p>
+					</div>
+					
+					<div class="button-wrap bw-del">
+						<a href="javascript:void(0);" class="but-1" id="delmlist">
+							<i class="but-icon1">
+								<span class="icon-font">确认</span>
+							</i>
+						</a>
+					    <button onClick="cancelMList()" class="but-2">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="updateMusicListPop">
+		<div id="pop-bg" class="pop-bg"></div>
+		<div id="pop" class="pop">
+			<div class="pop-head">
+				<span>修改歌单</span>
+				<img src="/MusicPlayer/image/close_pop.png" onClick="cancelMList()" />
+			</div>
+			<div class="pop-content">
+				<div class="pop-content-wrap">
+					<div class="music-list-name">
+						<label>歌单名：</label>
+						<input type="text" name="listname" id="listname"/>
+					</div>
+					<div id="error" class="error" style="display: none">
+						<img src="/MusicPlayer/image/error.png"/>
+						<span id="error-msg">歌单名不能为空</span>
+					</div>
+					<p class="ml-tips">可通过“收藏”将音乐添加到新歌单中</p>
+					<!-- 可复用 -->
+					<div class="button-wrap">
+						<a href="javascript:void(0);" class="but-1" id="updateml">
+							<i class="but-icon1">
+								<span class="icon-font">保存</span>
+							</i>
+						</a>
+					    <button onClick="cancelMList()" class="but-2">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>

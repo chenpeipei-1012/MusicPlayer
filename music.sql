@@ -20,6 +20,7 @@ user_pic varchar(100),
 user_nick varchar(20),
 user_iddr varchar(30),
 user_birthday date,
+user_type int(1) not null default 1,
 constraint check_gender check(user_gender in ('男', '女'))
 );
 
@@ -46,6 +47,7 @@ music_path varchar(500) not null,
 music_created_time timestamp not null default current_timestamp,
 music_lyric_path varchar(500) not null,
 music_type_id int(11),
+music_duration varchar(10),
 constraint foreign_album foreign key(music_album_id) references album(album_id),
 constraint foreign_type foreign key(music_type_id) references category(category_id)
 );
@@ -61,10 +63,11 @@ list_love int(1) default 0 check(list_love in (0,1,2)),
 constraint foreign_uid foreign key(list_uid) references user(user_id)
 );
 
-/* 6: 歌单音乐表 */
+/* 6: 歌单音乐表: 歌曲收藏表 */
 create table list_music(
 lid int(11),
 mid int(11),
+save_time timestamp not null default current_timestamp,
 constraint primary_lid_mid primary key(lid,mid),
 constraint foreign_lid foreign key(lid) references user_musiclist(list_id)
 	       on delete cascade,
@@ -73,8 +76,8 @@ constraint foreign_mid foreign key(mid) references music(music_id)
 
 /* 初始化数据 */
 /* 用户 */
-insert into user(user_id,user_name,user_pwd,user_gender,user_pic,user_nick) values(1,'chenpeipei','123456','女','musicCloud/userPic/chenpeipei.jpg','chenpeipei');
-
+insert into user(user_id,user_name,user_pwd,user_gender,user_pic,user_nick,user_type) values(1,'chenpeipei','123456','女','musicCloud/userPic/chenpeipei.jpg','chenpeipei',1);
+insert into user(user_id,user_name,user_pwd,user_gender,user_pic,user_nick,user_type) values(2,'admin','123456','女','musicCloud/userPic/chenpeipei.jpg','admin',2);
 /* 歌曲分类 */
 insert into category(category_id,category_type) values(1,'中国风');
 insert into category(category_id,category_type) values(2,'流行');
@@ -91,15 +94,15 @@ insert into album(album_id,album_name) values(5,'《三生三世十里桃花 电
 insert into album(album_id,album_name) values(6,'华宇热门');
 
 /* 音乐 */
-insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic) values('走着走着花就开了','卓舒晨',1,'musicCloud/music/卓舒晨_走着走着花就开了.mp3','musicCloud/lyric/卓舒晨_走着走着花就开了_1.txt',4,'musicCloud/musicPic/卓舒晨_走着走着花就开了_1.jpg');
+insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic,music_duration) values('走着走着花就开了','卓舒晨',1,'musicCloud/music/卓舒晨_走着走着花就开了.mp3','musicCloud/lyric/卓舒晨_走着走着花就开了_1.txt',4,'musicCloud/musicPic/卓舒晨_走着走着花就开了_1.jpg','03:48');
 
-insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic) values('星空剪影','蓝心羽',2,'musicCloud/music/蓝心羽_星空剪影.mp3','musicCloud/lyric/蓝心羽_星空剪影_2.txt',2,'musicCloud/musicPic/蓝心羽_星空剪影_2.jpg');
+insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic,music_duration) values('星空剪影','蓝心羽',2,'musicCloud/music/蓝心羽_星空剪影.mp3','musicCloud/lyric/蓝心羽_星空剪影_2.txt',2,'musicCloud/musicPic/蓝心羽_星空剪影_2.jpg','03:17');
 
-insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic) values('情人咒','阿云嘎',3,'musicCloud/music/阿云嘎_郁可唯_情人咒.mp3','musicCloud/lyric/阿云嘎_情人咒_3.txt',5,'musicCloud/musicPic/阿云嘎_情人咒_3.jpg');
+insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic,music_duration) values('情人咒','阿云嘎',3,'musicCloud/music/阿云嘎_郁可唯_情人咒.mp3','musicCloud/lyric/阿云嘎_情人咒_3.txt',5,'musicCloud/musicPic/阿云嘎_情人咒_3.jpg','06:02');
 
-insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic) values('雪落下的声音','陆虎',4,'musicCloud/music/雪落下的声音_陆虎.mp3','musicCloud/lyric/陆虎_雪落下的声音_4.txt',5,'musicCloud/musicPic/陆虎_雪落下的声音_4.jpg');
+insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic,music_duration) values('雪落下的声音','陆虎',4,'musicCloud/music/雪落下的声音_陆虎.mp3','musicCloud/lyric/陆虎_雪落下的声音_4.txt',5,'musicCloud/musicPic/陆虎_雪落下的声音_4.jpg','05:11');
 
-insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic) values('繁花','董贞',5,'musicCloud/music/董贞_繁花.mp3','musicCloud/lyric/董贞_繁花_5.txt',5,'musicCloud/musicPic/董贞_繁花_5.jpg');
+insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic,music_duration) values('繁花','董贞',5,'musicCloud/music/董贞_繁花.mp3','musicCloud/lyric/董贞_繁花_5.txt',5,'musicCloud/musicPic/董贞_繁花_5.jpg','03:45');
 
 
 /* 歌单 */
@@ -112,3 +115,7 @@ insert into list_music(lid,mid) values(1,2);
 insert into list_music(lid,mid) values(1,3);
 insert into list_music(lid,mid) values(1,4);
 insert into list_music(lid,mid) values(1,5);
+
+
+SELECT @@global.sql_mode;
+set GLOBAL sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';

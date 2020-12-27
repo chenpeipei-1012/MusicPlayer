@@ -312,7 +312,7 @@ thead{
 	bottom: 18px;
 	color: #000;
 }
-.icon-save{
+.nonm-bottom .icon-save{
 	background: url(../image/icon.png) no-repeat 0 -400px;
 	width: 16px;
   		height: 14px;

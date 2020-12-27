@@ -14,12 +14,16 @@ public class User {
 	private String userIddr;
 	private String userBirthday;
 	
+	// 用户类型
+	private int userType;
+	
 	public User(){
 		userBirthday = "";
 	}
 	
 	public User(int userId,String userName,String userGender,String userDesc,
-			String userPic,String userNick,String userIddr,String userBirthday){
+			String userPic,String userNick,String userIddr,String userBirthday,
+			int userType){
 		this.userId = userId;
 		this.userName = userName;
 		this.userGender = userGender;
@@ -28,6 +32,7 @@ public class User {
 		this.userNick = userNick;
 		this.userIddr = userIddr;
 		this.userBirthday = userBirthday;
+		this.userType = userType;
 	}
 	
 	public int getUserId() {
@@ -100,5 +105,13 @@ public class User {
 	
 	public void setUserBirthday(String userBirthday) {
 		this.userBirthday = userBirthday;
+	}
+
+	public int getUserType() {
+		return userType;
+	}
+
+	public void setUserType(int userType) {
+		this.userType = userType;
 	}
 }

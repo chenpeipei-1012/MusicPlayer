@@ -1,30 +1,32 @@
-@charset "utf-8"
-
 *{
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	outline: none;
+	font-style: normal;
 }
-
-html{
-    height: 100%;
+html,body{
+	width:100%;
+	height:100%;
+	/* Çå³ıbody×Ô´øµÄ8pxµÄÍâ±ß¾à */
+	margin: 0;
 }
-
 body{
-    overflow: auto;
-    height: 100%;
-    padding-top: 70px; /*å¤´éƒ¨å¯¼èˆªæ */
-    box-sizing: border-box;
-    /* padding-bottom: 50px; åº•éƒ¨æ’­æ”¾å™¨ */
-    margin: 0;
-    /* background-color:#ECE3DA; */
+	padding-top: 75px;
+    padding-bottom: 67px;
+	overflow: hidden;
+	box-sizing: border-box;
+	background-color: #f2f2f2;
+	height: 100%;
 }
 
-li{
+.index-content li{
     list-style: none;
     float: left;
     line-height: 39px;
     font-size:  14px;
 }
+
 
 .content{
 	overflow-y: auto;
@@ -33,7 +35,7 @@ li{
     height: 100%;
     width: 100%;
 }
-
+/*
 .foot{
     background-color: gainsboro;
     width: 100%;
@@ -41,6 +43,8 @@ li{
     position: fixed;              
     bottom: 0;
 }
+
+*/
 
 .banner{
     width: 1000px;

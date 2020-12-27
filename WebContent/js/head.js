@@ -9,7 +9,12 @@
 	});
 	
 	// 页面加载时，根据URL将导航栏中颜色改变将导航栏的"发现音乐"改变背景颜色
-	$("#find").css("background","#000");
+	// 得到URL
+	curTabShow();
+	function curTabShow(){
+		// alert(window.location.href);
+	}
+	
 	
 	// 动态添加css文件
 	function addCss(filename){
@@ -28,19 +33,42 @@
 		cache:true
 	});
 	
+	// 发现音乐
+	$("#find").click(function(){
+		// 移除原有的信息
+    	$(".content").empty();
+    	
+    	// 移除和添加css文件信息css/footer.css"/>
+    	removejscssfile("setting.css","css");
+    	removejscssfile("playlist.css","css");
+    	addCss('/MusicPlayer/css/index.css');
+    	addCss('/MusicPlayer/css/footer.css');
+
+    	// 加载content内容
+    	$(".content").load("/MusicPlayer/index.jsp #container",function(){
+    		 // 修改url
+    		 history.pushState(null,null,"/MusicPlayer/index.jsp");
+    		 $.getScript("/MusicPlayer/js/index.js");
+    	});
+	});
 	
 	$("#myMusic").click(function(){
+		
 		$.ajax({
-		    type : "POST",
+		    type : "GET",
 		    async : true,         
-		    url : "/MusicPlayer/playlist",    
+		    url : "/MusicPlayer/user/playlist",    
 		    dataType : "json",        //返回数据形式为json
 		    success : function(result){
+		    	// 是否登录
+		    	if(result.isLogin == "no"){
+		    		// 页面跳转
+		    		window.location.replace("/MusicPlayer/login.html");
+		    		return;
+		    	}
+		    	
 		    	// 移除原有的信息
 		    	$(".content").empty();
-		    	
-		    	// 把整个content都删除
-		    	// $(".content").remove();
 		    	
 		    	removejscssfile("setting.css","css");
 		    	addCss('/MusicPlayer/css/pop.css');
@@ -72,4 +100,15 @@
 		}
 	}
 	
-//});
+	
+	$(".login").click(function(){
+		// 打开新窗口
+		window.open("/MusicPlayer/login.html?which=Login"); 
+		// 弹窗
+		// 加载弹窗
+//		$("#pop-content").load("/MusicPlayer/popWindows.html #loginPop",function(){
+//			
+//		});
+		
+	});
+	

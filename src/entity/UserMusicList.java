@@ -12,6 +12,7 @@ public class UserMusicList {
 	
 	// 歌单中拥有的歌曲数量
 	private int musicNum;
+	private String listPic;
 	
 	public UserMusicList(){
 		this.musicNum = 0;
@@ -73,6 +74,12 @@ public class UserMusicList {
 	public void setMusicNum(int musicNum) {
 		this.musicNum = musicNum;
 	}
-	
-	
+
+	public String getListPic() {
+		return listPic;
+	}
+
+	public void setListPic(String listPic) {
+		this.listPic = listPic;
+	}
 }

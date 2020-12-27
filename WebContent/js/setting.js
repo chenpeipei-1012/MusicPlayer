@@ -25,21 +25,8 @@ function bindEvent(){
 	$("#scroll-pro").click(function(){
 		$("#pselect").show();
 	});
-
-	// 如果用户初始年份不为空，则为天数选择器添加点击事件并初始化
-	if($("#year").text() != "--"){
-		$("#scroll-day").click(function(){
-			initDaySelect();
-			$("#dselect").show();
-		});
-	}
-
-	// 如果用户初始省份不为空，则为城市选择器添加点击事件
-	if($("#province").text() != "---"){
-		$("#scroll-city").click(function(){
-			$("#cselect").show();
-		});
-	}
+	
+	
 }
 
 function init(){
@@ -182,10 +169,13 @@ function initCity(){
 	var contry = provinceArray[index].country
 	var str = "";
 	
+	// city选择器先清空
 	// 为city选择器循环添加<li>标签
 	for(var i = 0;i<length;i++){
 		str+='<li class="f-thide"><a href="javascript:void(0)" onclick="choiceCity(this)">'+contry[i] +'</a></li>';
 	}
+	
+	$("#cselect").empty();
 	$("#cselect").append(str);
 	$("cselect").show();
 	
@@ -299,6 +289,9 @@ function modifyUserInfo(){
     // http://localhost:8080/MusicPlayer/musicClou
     picPath = picPath.substring(picPath.indexOf("musicCloud"));
     
+    //  $('input[name="sex"]:checked').val(); 
+    var gender = $("input[name='gender']:checked").val();
+    
     // AJAX提交数据
     $.ajax({
         type : "POST",
@@ -307,7 +300,7 @@ function modifyUserInfo(){
         dataType : "json",        //返回数据形式为json
         data:{"nickname":$("#username").val(),
         	  "desc":$("#introduce").val(),
-        	  "gender":$("[name='gender']").val(),
+        	  "gender":gender,
         	  "bir":bir,
         	  "iddr":iddr,
         	  "pic":picPath,
@@ -319,16 +312,24 @@ function modifyUserInfo(){
         		tips += ' <i class="tip-icon-success"></i>' +
 							'<span class="tip-info">保存成功</span>' +
 						'</div>' ;
+        		if(result.isPicChange){
+        			// 修改头像: url(<%=url %>) 
+        			var url = "url(/MusicPlayer/" + result.picPath +")";
+        			$("#profile").css("background-image",url);
+        		}
         	}else{
         		tips += ' <i class="tip-icon-error"></i>' +
 							'<span class="tip-info">保存失败</span>' +
 						'</div>' ;
         	}
+        	
         	$("#tips").remove();
         	$("#set").append(tips);
         	setTimeout(function(){
         		$("#tips").remove();
         	},3000);
+        	
+        	// 若更改了头像，则需要刷新head.jsp的头像信息
         },
         error : function(errorMsg) {
             //请求失败时执行该函数
@@ -445,6 +446,30 @@ $.ajax({
         
         // 头像的显示
         $("#update-upic").attr("src","/MusicPlayer/" + user.userPic);
+        
+        // 点击事件
+        // TODO
+        // 必须先加载数据
+
+    	// 如果用户初始年份不为空，则为天数选择器添加点击事件并初始化
+    	if($("#year").text() != "--"){
+    		$("#scroll-day").click(function(){
+    			initDaySelect();
+    			$("#dselect").show();
+    		});
+    	}
+
+    	// 如果用户初始省份不为空，则为城市选择器添加点击事件
+    	if($("#province").text() != "---"){
+    		// 并初始化城市下拉框
+        	initCity();
+        	
+    		$("#scroll-city").click(function(){
+    			$("#cselect").show();
+    		});
+    	}
+    	
+    	
     },
     error : function(errorMsg) {
         //请求失败时执行该函数

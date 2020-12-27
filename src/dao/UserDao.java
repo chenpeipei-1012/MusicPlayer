@@ -15,4 +15,7 @@ public interface UserDao {
 	
 	// 查询用户信息
 	public User queryUserInfoById(int userId) throws SQLException;
+	
+	// 根据用户名查询用户
+	public User queryUserInfoByName(String userName) throws SQLException;
 }

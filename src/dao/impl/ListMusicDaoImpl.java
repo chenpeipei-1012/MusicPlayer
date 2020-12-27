@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
 import util.DBUtils;
 import dao.ListMusicDao;
 import entity.Music;
@@ -45,6 +47,8 @@ public class ListMusicDaoImpl implements ListMusicDao{
 			music.setMusicLyricPath(result.getString("music_lyric_path"));
 			music.setMusicPic(result.getString("music_pic"));
 			
+			music.setMusicDuration(result.getString("music_duration"));
+			
 			list.add(music);
 		}
 
@@ -56,11 +60,30 @@ public class ListMusicDaoImpl implements ListMusicDao{
 	public static void main(String args []){
 		ListMusicDaoImpl impl = new ListMusicDaoImpl();
 		try {
-			impl.getMusicListById(1);
+			//impl.getMusicListById(1);
+			impl.addMusicToList(1, 1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void addMusicToList(int listId, int musicId) throws MySQLIntegrityConstraintViolationException,SQLException{
+		Connection conn = DBUtils.getConnection();
+		String sql = "insert into list_music(lid,mid) values(?,?)";
+		
+		// 预准备Statement
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		// 给参数赋值
+		stmt.setInt(1, listId);
+		stmt.setInt(2, musicId);
+		
+		// 执行SQL
+		int result = stmt.executeUpdate();
+		System.out.println("result:" + result);
+		// 关闭连接
+		DBUtils.closeConnection(conn);
 	}
 
 }
