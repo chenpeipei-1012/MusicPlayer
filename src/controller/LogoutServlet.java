@@ -21,16 +21,12 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
         session.removeAttribute("user");
         
-        System.out.println("============="+ request.getContextPath() + "/index.jsp");
         // 重定向到首页
         response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

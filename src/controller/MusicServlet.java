@@ -25,19 +25,13 @@ import dao.impl.ListMusicDaoImpl;
 			urlPatterns = {"/user/saveMusic"}
 )
 public class MusicServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public MusicServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String listId = request.getParameter("listId");
 		String musicId = request.getParameter("musicId");

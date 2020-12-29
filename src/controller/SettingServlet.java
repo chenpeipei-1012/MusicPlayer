@@ -18,6 +18,7 @@ import entity.User;
 
 @WebServlet("/update")
 public class SettingServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,13 +37,9 @@ public class SettingServlet extends HttpServlet {
 		PrintWriter out = null;
 		out = response.getWriter();
 		
-		// 获取当前登录用户
-		// Session 中取用户
+		// Session 中取请求用户
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		
-		System.out.println("pic:" + pic);
-		System.out.println("user.pic:" + user.getUserPic());
 		
 		int userId = user.getUserId();
 
@@ -62,7 +59,6 @@ public class SettingServlet extends HttpServlet {
 			 }
 			 
 			 // 修改Session中存储的用户信息
-			 
 			 session.setAttribute("user", user);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,7 +95,6 @@ public class SettingServlet extends HttpServlet {
 			user = userDao.queryUserInfoById(userId);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		JSONObject json = new JSONObject();

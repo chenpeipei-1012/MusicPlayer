@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class EncodingFilter implements Filter {
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
@@ -45,9 +45,6 @@ public class EncodingFilter implements Filter {
 			chain.doFilter(request, response);
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		
 	}
