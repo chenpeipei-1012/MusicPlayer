@@ -74,6 +74,23 @@ constraint foreign_lid foreign key(lid) references user_musiclist(list_id)
 constraint foreign_mid foreign key(mid) references music(music_id)
 );
 
+/* 7: 歌曲评论表 */
+create table music_comment(
+mc_id int(11) primary key auto_increment,
+music_id int(11) not null,
+comment varchar(100) not null,
+constraint foreign_mc_mid foreign key(music_id) references music(music_id)
+);
+
+/* 8: 歌曲下载记录表 */
+create table music_download(
+download_id int(11) primary key auto_increment,
+music_id int(11) not null,
+download_date date,
+constraint foreign_md_mid foreign key(music_id) references music(music_id)
+);
+
+
 /* 初始化数据 */
 /* 用户 */
 insert into user(user_id,user_name,user_pwd,user_gender,user_pic,user_nick,user_type) values(1,'chenpeipei','123456','女','musicCloud/userPic/chenpeipei.jpg','chenpeipei',1);

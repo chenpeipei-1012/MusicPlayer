@@ -48,8 +48,7 @@ public class PlayListServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		String listName = request.getParameter("listname");
-		// 先固定用户
-		
+
 		// Session 中取用户
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
@@ -57,7 +56,6 @@ public class PlayListServlet extends HttpServlet {
 		int userId = user.getUserId();
 		UserMusicListDao userMusicListDao = new UserMusicListDaoImpl();
 		try {
-			System.out.println("增加歌单");
 			listId = userMusicListDao.addMusicList(userId,listName);
 			isSuccess = true;
 		} catch (SQLException e) {
