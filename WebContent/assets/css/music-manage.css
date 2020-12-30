@@ -5,3 +5,23 @@
 .btn.btn-round {
     border-radius: 30px;
 }
+
+.c-icon{
+	cursor: pointer;
+	color: #9c27b0;
+}
+
+.but-op{
+	color: #fff;
+    border-color: #701c7e;
+    padding: 12px 30px;
+    margin: 0.3125rem 1px;
+    font-size: .75rem;
+    font-weight: 400;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.search-btn{
+	position: relative;
+    bottom: 10px;
+}

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.MusicDao;
+import dao.impl.MusicDaoImpl;
+
 /**
  * Servlet implementation class FileServlet
  */
@@ -25,21 +28,17 @@ public class FileServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String fileRelPath = request.getParameter("fileName");
+		String musicId = request.getParameter("musicId");
+		
 		
 		String fileAbsPath = this.getServletContext().getRealPath(fileRelPath);
-		System.out.println("fileName:" + fileAbsPath);
+		System.out.println("fileName:" + fileRelPath);
 		
 	    File file = new File(fileAbsPath);
 	    
@@ -59,6 +58,10 @@ public class FileServlet extends HttpServlet {
 	        while ((count = fis.read(buffer)) > 0) {
 	        	response.getOutputStream().write(buffer, 0, count);
 	        }
+	        
+	        // 下载成功后，记录下载信息
+	        MusicDao musicDao = new MusicDaoImpl();
+	        musicDao.addMusicDownloadRecord(Integer.parseInt(musicId));
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {

@@ -5,10 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import org.apache.commons.lang.time.DateUtils;
 
 import util.DBUtils;
 import dao.UserDao;
+import entity.MusicDownload;
 import entity.User;
 
 public class UserDaoImpl implements UserDao{

@@ -441,12 +441,13 @@ $(".lock").click(function(){
 			var choiceMusicIndex = findMusicListIndex(musicId,musicList);
 			
 		    // 下载歌曲
-			var url = "/MusicPlayer/" +  musicList[choiceMusicIndex].musicPath;
+			var url = "/MusicPlayer/" +  musicList[choiceMusicIndex].musicPath + "?musicId=" + musicId;
 			
 			// 文件下载不能用AJAX
 			var fileName = musicList[choiceMusicIndex].musicPath;
 	        var form = $("<form></form>").attr("action", "/MusicPlayer/file").attr("method", "post");
 	        form.append($("<input></input>").attr("type", "hidden").attr("name", "fileName").attr("value", fileName));
+	        form.append($("<input></input>").attr("type", "hidden").attr("name", "musicId").attr("value", musicId));
 	        form.appendTo('body').submit().remove();
 	        
 	        
