@@ -29,6 +29,8 @@ public class DisplayServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String musicId = request.getParameter("musicId");
+		System.out.println("musicId:" + musicId);
 		PrintWriter out = response.getWriter();
 		// JSON∂‘œÛ
 		JSONObject json = new JSONObject();
@@ -44,7 +46,7 @@ public class DisplayServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

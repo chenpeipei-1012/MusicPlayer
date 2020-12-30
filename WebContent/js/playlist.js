@@ -678,32 +678,23 @@ function viewMusicDetail(e){
 	// 截取table-rows-1
 	var musicId = id.substring(id.lastIndexOf("-")+1);
 	
-	var url = "/MusicPlayer/user/display?musicId="+musicId;
-	$.ajax({
-        type : "GET",
-        async : true,         
-        url : url,    
-        dataType : "json",
-        success : function(result) {
-        	// 加载详情页面
-        	// 移除原有的信息
-        	$(".content").empty();
-        	
-        	// 移除和添加css文件信息css/footer.css"/>
-        	removejscssfile("setting.css","css");
-        	removejscssfile("playlist.css","css");
-        	addCss('/MusicPlayer/css/display.css');
+	// 加载详情页面
+	// 移除原有的信息
+	$(".content").empty();
+	
+	// 移除和添加css文件信息css/footer.css"/>
+	removejscssfile("setting.css","css");
+	removejscssfile("playlist.css","css");
+	addCss('/MusicPlayer/css/display.css');
 
-        	// 加载content内容
-        	$(".content").load("/MusicPlayer/user/display.jsp #container",function(){
-        		 // 修改url
-        		 history.pushState(null,null,"/MusicPlayer/user/display?musicId="+musicId);
-        		 $.getScript("/MusicPlayer/js/display.js");
-        	});
-        
-        },error : function(errorMsg) {
-	        //请求失败时执行该函数
-	        alert("请求数据失败!");
-	    }
+	// 加载content内容
+	$(".content").load("/MusicPlayer/user/display.jsp #container",function(){
+		 // 修改url
+		 history.pushState(null,null,"/MusicPlayer/user/display?musicId="+musicId);
+		 $.getScript("/MusicPlayer/js/display.js",function(){
+			 loadMusicInfo(musicId);
+		 });
 	});
+        
+        
 }
