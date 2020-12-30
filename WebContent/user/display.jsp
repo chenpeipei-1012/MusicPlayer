@@ -239,7 +239,7 @@
 
 </body>
 	<script src="../js/jquery-1.8.3.js"></script>
-	<script src="js/head.js"></script>
-	<script src="js/foot.js"></script>
+	<script src="../js/head.js"></script>
+	<script src="../js/foot.js"></script>
 	<script src="../js/display.js"></script>
 </html>

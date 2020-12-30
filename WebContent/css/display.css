@@ -1,3 +1,4 @@
+
 *{
 	margin: 0;
 	padding: 0;
@@ -37,14 +38,18 @@ html{
 }
 
 .content-wrap{
-	/*min-height: 1000px;*/
+
+}
+/*
+.content{
+	min-height: 1000px;
 	width: 980px;
 	margin: 0 auto;
 	background-color: #fff;
 	display: block;
 	word-break: break-word;
 	padding: 20px;
-}
+}*/
 .main{
 	
 }
@@ -52,13 +57,12 @@ html{
 	margin: 0 auto;
 	box-sizing: border-box;
 	width: 950px;
-	/*height: 524px;
-	display: flex;*/
 }
 
 .bott{
 	box-sizing: border-box;
 	width: 900px;
+	margin: auto;
 }
 .showalbum {
 	display: inline-block;
@@ -114,7 +118,6 @@ html{
 	color: #333;
 	font-family: Arial, Helvetica, sans-serif;
 	padding-top: 20px;
-	
 }
 
 .block{
