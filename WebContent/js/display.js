@@ -20,7 +20,6 @@ $(".flag_ctrl").click(function(){
 function loadMusicInfo(musicId){
 	var aa = window.location.href;
 	var url = "/MusicPlayer/user/display?musicId="+musicId;
-	alert(aa);
 	$.ajax({
         type : "GET",
         async : true,         

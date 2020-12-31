@@ -22,12 +22,8 @@ public class DisplayServlet extends HttpServlet {
      */
     public DisplayServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String musicId = request.getParameter("musicId");
 		System.out.println("musicId:" + musicId);
@@ -42,9 +38,6 @@ public class DisplayServlet extends HttpServlet {
         out.close();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
