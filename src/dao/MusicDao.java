@@ -9,4 +9,7 @@ public interface MusicDao {
 
 	// ∑÷“≥≤È—Ø∏Ë«˙
 	public List<Music> queryMusicByPaging(int offset,int pageSize) throws SQLException;
+
+	public Music getMusicById(Integer id);
+
 }

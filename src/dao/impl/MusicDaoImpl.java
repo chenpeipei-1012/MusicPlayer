@@ -1,9 +1,6 @@
 package dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,5 +45,68 @@ public class MusicDaoImpl implements MusicDao{
 		
 		return list;
 	}
+
+    public Music getMusicById(Integer id){
+	    Music music = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Connection conn=null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        try {
+        String sql="";
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","123456");
+        sql="select * from music where username=?";
+        ps=conn.prepareStatement(sql);
+        ps.setInt(1,id);
+        rs=ps.executeQuery();
+
+        while (rs.next()) {
+            music=new Music();
+            music.setMusicId(rs.getInt("music_id"));
+            music.setMusicName(rs.getString("music_name"));
+            music.setMusicAuthor(rs.getString("music_author"));
+            music.setMusicAlbumId(rs.getInt("music_album_id"));
+            music.setMusicAlbum(rs.getString("album_name"));
+            music.setMusicPath(rs.getString("music_path"));
+            music.setMusicCreatedTime(rs.getTimestamp("music_created_time"));
+            music.setMusicLyricPath(rs.getString("music_lyric_path"));
+            music.setMusicPic(rs.getString("music_pic"));
+
+
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if(rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(ps!=null)
+            {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return music;
+    }
+
 
 }
