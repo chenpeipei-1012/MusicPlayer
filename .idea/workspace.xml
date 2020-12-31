@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da828435-1a2d-4a65-90b1-35d8c01fd7b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dao/AlbumDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/impl/AlbumDaoImpl.java" afterDir="false" />
+    <list default="true" id="da828435-1a2d-4a65-90b1-35d8c01fd7b9" name="Default Changelist" comment="it may but work very well please save your copy!!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/display/display.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/display/display.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/js/display.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/display.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/DisplayServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/MusicDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/MusicDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/impl/MusicCommentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/MusicCommentDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/impl/MusicDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/MusicDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Music.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/MusicComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/MusicComment.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -26,63 +16,17 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48976377">
+    <splitter split-orientation="horizontal" split-proportion="0.8913386">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WebContent/display/display.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="122">
-                  <caret line="187" column="40" selection-start-line="187" selection-start-column="36" selection-end-line="187" selection-end-column="40" />
-                  <folding>
-                    <element signature="n#style#0;n#a#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dao/MusicDao.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="25" column="64" lean-forward="true" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/entity/Music.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dao/impl/MusicDaoImpl.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1564">
-                  <caret line="127" column="16" lean-forward="true" selection-start-line="127" selection-start-column="16" selection-end-line="128" selection-end-column="27" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#333#340#0" expanded="true" />
-                    <element signature="e#3362#3369#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/dao/impl/MusicCommentDaoImpl.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-68">
-                  <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+                <state relative-caret-position="187">
+                  <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="method#getMusicCommentsByMusicId#0;class#MusicCommentDaoImpl#0" />
                   </folding>
                 </state>
               </provider>
@@ -100,7 +44,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/controller/DisplayServlet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="394">
+                <state relative-caret-position="751">
                   <caret line="89" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="46" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -111,7 +55,47 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/dao/UserMusicListDao.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WebContent/css/display.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1428" />
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WebContent/css/setting-content.css">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WebContent/css/foot.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1989" />
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/dao/MusicCommentDao.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="204">
+                  <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/entity/ListMusic.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="34">
@@ -121,42 +105,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/entity/MusicComment.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="935">
-                  <caret line="55" column="16" lean-forward="true" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#278#279#0" expanded="true" />
-                    <element signature="e#306#307#0" expanded="true" />
-                    <element signature="e#349#350#0" expanded="true" />
-                    <element signature="e#383#384#0" expanded="true" />
-                    <element signature="e#419#420#0" expanded="true" />
-                    <element signature="e#450#451#0" expanded="true" />
-                    <element signature="e#499#500#0" expanded="true" />
-                    <element signature="e#539#540#0" expanded="true" />
-                    <element signature="e#573#574#0" expanded="true" />
-                    <element signature="e#603#604#0" expanded="true" />
-                    <element signature="e#649#650#0" expanded="true" />
-                    <element signature="e#687#688#0" expanded="true" />
-                    <element signature="e#722#723#0" expanded="true" />
-                    <element signature="e#752#753#0" expanded="true" />
-                    <element signature="e#799#800#0" expanded="true" />
-                    <element signature="e#837#838#0" expanded="true" />
-                    <element signature="e#879#880#0" expanded="true" />
-                    <element signature="e#914#915#0" expanded="true" />
-                    <element signature="e#973#974#0" expanded="true" />
-                    <element signature="e#1021#1022#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/WebContent/js/display.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="109">
-                  <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+                <state relative-caret-position="1343">
+                  <caret line="79" column="34" lean-forward="true" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -165,11 +117,20 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/WebContent/js/display.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="530">
+                <state relative-caret-position="1499">
                   <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/dao/AlbumDao.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" column="48" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="48" />
                 </state>
               </provider>
             </entry>
@@ -260,7 +221,8 @@
               <item name="MusicPlayer" type="b2602c69:ProjectViewProjectNode" />
               <item name="MusicPlayer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MusicPlayer" type="b2602c69:ProjectViewProjectNode" />
@@ -278,12 +240,6 @@
               <item name="MusicPlayer" type="462c0819:PsiDirectoryNode" />
               <item name="WebContent" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MusicPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MusicPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MusicPlayer" type="b2602c69:ProjectViewProjectNode" />
@@ -342,7 +298,7 @@
       <updated>1609052912787</updated>
       <workItem from="1609052921596" duration="3180000" />
       <workItem from="1609331188104" duration="732000" />
-      <workItem from="1609332034766" duration="22404000" />
+      <workItem from="1609332034766" duration="23694000" />
     </task>
     <task id="LOCAL-00001" summary="updata MusicComment entity &amp; dao &amp; daoimpl">
       <created>1609375458135</created>
@@ -351,11 +307,18 @@
       <option name="project" value="LOCAL" />
       <updated>1609375458135</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="it may but work very well please save your copy!!!">
+      <created>1609395609546</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1609395609546</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26316000" />
+    <option name="totallyTimeSpent" value="27606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1563" height="845" extended-state="6" />
@@ -380,7 +343,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32959327" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32959327" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -438,7 +401,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updata MusicComment entity &amp; dao &amp; daoimpl" />
-    <option name="LAST_COMMIT_MESSAGE" value="updata MusicComment entity &amp; dao &amp; daoimpl" />
+    <MESSAGE value="it may but work very well please save your copy!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="it may but work very well please save your copy!!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -453,9 +417,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -536,12 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/css/display.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/css/foot.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/foot.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -549,13 +504,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7616">
           <caret line="448" column="10" selection-start-line="448" selection-start-column="10" selection-end-line="448" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/UserMusicListDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -646,27 +594,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/AlbumDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="48" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/impl/UserMusicListDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/MusicCommentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -787,32 +718,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/impl/MusicCommentDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/impl/AlbumDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="35" column="19" lean-forward="true" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/DisplayServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="89" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1882#1896#0" expanded="true" />
-            <element signature="e#2261#2268#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -823,10 +732,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/AlbumDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="48" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/DisplayServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="751">
+          <caret line="89" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1882#1896#0" expanded="true" />
+            <element signature="e#2261#2268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/js/display.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
+        <state relative-caret-position="1343">
+          <caret line="79" column="34" lean-forward="true" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/UserMusicListDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/display.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1428" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/setting-content.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/foot.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1989" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/MusicCommentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/impl/MusicCommentDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getMusicCommentsByMusicId#0;class#MusicCommentDaoImpl#0" />
+          </folding>
         </state>
       </provider>
     </entry>
