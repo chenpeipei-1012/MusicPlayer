@@ -105,4 +105,21 @@ public class Music {
 	public void setMusicDuration(String musicDuration) {
 		this.musicDuration = musicDuration;
 	}
+
+	@Override
+	public String toString() {
+		return "{" +
+				"musicId:" + musicId +","+
+				"musicName:" + musicName + "," +
+				"musicAuthor:" + musicAuthor + "," +
+				"musicAlbumId:" + musicAlbumId +
+				"musicAlbum:" + musicAlbum + "," +
+				"musicPath:" + musicPath + "," +
+				"musicCreatedTime:" + musicCreatedTime +","+
+				"musicLyricPath:" + musicLyricPath + "," +
+				"musicPic:" + musicPic + "," +
+				"musicTypeId:" + musicTypeId +
+				"musicDuration:" + musicDuration + "," +
+				'}';
+	}
 }

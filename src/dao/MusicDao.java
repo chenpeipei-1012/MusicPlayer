@@ -20,4 +20,8 @@ public interface MusicDao {
 	
 	// 得到近一周下载数量
 	public List<MusicDownload> queryDownloadNum() throws SQLException;
+	//
+	public Music getMusicById(Integer id) throws SQLException;
+
+	public List<Music> queryMusicRecomMost()throws SQLException;
 }

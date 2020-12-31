@@ -17,21 +17,61 @@ $(".flag_ctrl").click(function(){
 });
 
 // 加载歌曲信息
-function loadMusicInfo(musicId){
+function loadMusicInfo(music){
 	var aa = window.location.href;
 	var url = "/MusicPlayer/user/display?musicId="+musicId;
 	$.ajax({
         type : "GET",
-        async : true,         
-        url : url,    
+        async : true,
+        url : url,
         dataType : "json",
         success : function(result) {
-        	// TODO
-        	// 填充数据
-        
+        	
+
         },error : function(errorMsg) {
 	        //请求失败时执行该函数
 	        alert("请求数据失败!");
 	    }
+
+	});
+}
+function loadMusiclist (RCMusic){
+	var aa = window.location.href;
+	var url = "/MusicPlayer/user/display?musicId="+music.music_id;
+	alert(aa);
+	$.ajax({
+		type : "GET",
+		async : true,
+		url : url,
+		dataType : "json",
+		success : function(result) {
+
+		
+
+		},error : function(errorMsg) {
+			//请求失败时执行该函数
+			alert("请求数据失败!");
+		}
+
+	});
+}
+function loadMusiComment (mclist){
+	var aa = window.location.href;
+	var url = "/MusicPlayer/user/display?musicId="+music.music_id;
+	alert(aa);
+	$.ajax({
+		type : "GET",
+		async : true,
+		url : url,
+		dataType : "json",
+		success : function(result) {
+			//更新评论区
+			
+
+		},error : function(errorMsg) {
+			//请求失败时执行该函数
+			alert("请求数据失败!");
+		}
+
 	});
 }
