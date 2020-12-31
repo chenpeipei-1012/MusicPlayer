@@ -1,0 +1,18 @@
+.logo{
+	padding: 15px 15px;
+}
+
+.logo-font{
+	font-size: 40px;
+    font-family: cursive;
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    top: 10px;
+}
+.adduser::after{
+	content: "\F001";
+}
+.download-icon::after{
+	content: "\F001";
+}

@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
 				break;
 			case 2 :
 				// 重定向到管理员用户主页
-				response.sendRedirect("admin/dashbord.jsp");
+				response.sendRedirect("/MusicPlayer/admin/dashboard.html");
 				break;
 		}
 	}

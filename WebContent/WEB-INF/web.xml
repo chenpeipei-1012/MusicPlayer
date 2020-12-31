@@ -4,6 +4,11 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  <listener>
+    <listener-class>
+          controller.SessionCounter
+      </listener-class>
+  </listener>
   <filter>
     <filter-name>permission</filter-name>
     <filter-class>controller.ParmissionFilter</filter-class>

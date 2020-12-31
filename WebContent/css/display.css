@@ -1,13 +1,23 @@
 
-.body{
-	min-width: 980px;
-	background-color: #f5f5f5;
-	border: 0px;
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+html{
 	width: 100%;
 	height: 100%;
-	display: flex;
 }
-	
+
+.body{
+	padding-top: 75px;
+    padding-bottom: 67px;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    height: 100%;
+    width: 100%;
+}
 
 .side{
 	width: 200px;
@@ -16,8 +26,21 @@
 	display: block;
 	border-style:none;
 	border-left-style:outset;
+	float: right;
 }
 
+.content{
+	overflow-y: auto;
+    top: -75px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.content-wrap{
+
+}
+/*
 .content{
 	min-height: 1000px;
 	width: 980px;
@@ -26,7 +49,7 @@
 	display: block;
 	word-break: break-word;
 	padding: 20px;
-}
+}*/
 .main{
 	
 }
@@ -34,13 +57,12 @@
 	margin: 0 auto;
 	box-sizing: border-box;
 	width: 950px;
-	height: 483px;
-	display: flex;
 }
 
 .bott{
 	box-sizing: border-box;
 	width: 900px;
+	margin: auto;
 }
 .showalbum {
 	display: inline-block;
@@ -48,6 +70,7 @@
     height: 205px;
 	margin-top: 20px;
 	margin-left: 20px;
+	float: left;
 }
 .msk{
 	position: absolute;
@@ -57,8 +80,9 @@
 
 .background {
 	display: inline-block;
-    margin-left: 120px;
+    margin-left: 50px;
     font-size: 24px;
+    margin-top: 20px;
 }
 
 
@@ -77,24 +101,23 @@
 }
 
 
-.body .fix_texture{
+.fix_texture{
 	display: inline-block;
 	margin-block-start: 5px;
 	margin-block-end: 1em;
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
-	font-size: 16px;
+	font-size: 12px;
 	color: #333333;
 }
 
 .lrc{
 	width: 300px;
-	height: 350px;
+	/*height: 350px;*/
 	font-size: 12px;
 	color: #333;
 	font-family: Arial, Helvetica, sans-serif;
-	overflow-y: scroll;
-	
+	padding-top: 20px;
 }
 
 .block{
@@ -140,6 +163,7 @@
 
 .comid{
 	word-break: break-word;
+	padding-left: 10px;
 }
 	
 .u-hd3{
@@ -265,4 +289,70 @@ ul {
 .xtx{
 	height: 30;
 	width: 30;
+}
+
+.lyric-item{
+	line-height: 23px;
+}
+.f-hide{
+	display: none;
+}
+.u-icn{
+	background: url(../image/icon.png) no-repeat;
+	width: 11px;
+    height: 8px;
+    display: inline-block;
+    background-position: -65px -520px;
+}
+
+.flag_ctrl{
+	font-size: 12px;
+    color: #0c73c2;
+    text-decoration: none;
+    line-height: 23px;
+    cursor: pointer;
+}
+
+.mn-icn{
+	width: 54px;
+    height: 24px;
+    display: inline-block;
+    background: url(../image/icon.png) no-repeat;
+    /* ×¨¼­£º ackground-position: 0 -186px;*/
+    background-position: 0 -186px;
+    position: relative;
+    top: 4px;
+    padding-right: 10px;
+}
+
+.singer{
+	font-size: 16px;
+}
+
+.crl{
+	padding-top: 5px;
+}
+
+.com-wrap{
+	padding-left: 20px;
+}
+
+.com-btn{
+	background: url(../image/button.png) no-repeat;
+	width: 46px;
+    height: 25px;
+    background-position: -84px -64px;
+    color: #fff;
+    text-align: center;
+    line-height: 25px;
+    float: right;
+}
+
+.cbtn-wrap{
+	padding-top: 10px;
+    padding-right: 28px;
+}
+
+.u-name{
+	color: #0c73c2;
 }

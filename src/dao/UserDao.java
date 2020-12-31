@@ -1,7 +1,9 @@
 package dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
+import entity.MusicDownload;
 import entity.User;
 
 public interface UserDao {
@@ -18,4 +20,6 @@ public interface UserDao {
 	
 	// 根据用户名查询用户
 	public User queryUserInfoByName(String userName) throws SQLException;
+	
+	// 得到近一周新增用户数量
 }

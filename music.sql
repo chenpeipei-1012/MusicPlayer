@@ -21,6 +21,7 @@ user_nick varchar(20),
 user_iddr varchar(30),
 user_birthday date,
 user_type int(1) not null default 1,
+user_created_date date,
 constraint check_gender check(user_gender in ('男', '女'))
 );
 
