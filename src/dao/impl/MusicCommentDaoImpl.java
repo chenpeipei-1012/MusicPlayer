@@ -6,8 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import dao.MusicCommentDao;
 
-public class MusicCommentDaoImpl {
+public class MusicCommentDaoImpl implements MusicCommentDao{
     public List<MusicComment> getMusicCommentsByMusicId(Integer id) {
         List<MusicComment> list = new ArrayList<>();
 
@@ -24,7 +25,7 @@ public class MusicCommentDaoImpl {
 
             String sql = "";
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
-            sql = "select * from stu where music_id=?";
+            sql = "select * from music_comment  where music_id=?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();//执行查询语句并返回查询结果
@@ -76,7 +77,7 @@ public class MusicCommentDaoImpl {
         PreparedStatement ps = null;
         try {
 
-            String Sql = "insert into stu values(?,?,?,?,?)";
+            String Sql = "insert into music_comment values(?,?,?,?,?)";
             ps = conn.prepareStatement(Sql);
             ps.setInt(1, mc_id);
             ps.setInt(2, musicId);

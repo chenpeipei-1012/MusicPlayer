@@ -60,7 +60,7 @@ public class MusicDaoImpl implements MusicDao{
         try {
         String sql="";
         conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","123456");
-        sql="select * from music where username=?";
+        sql="select * from music where music_id=?";
         ps=conn.prepareStatement(sql);
         ps.setInt(1,id);
         rs=ps.executeQuery();
@@ -76,8 +76,6 @@ public class MusicDaoImpl implements MusicDao{
             music.setMusicCreatedTime(rs.getTimestamp("music_created_time"));
             music.setMusicLyricPath(rs.getString("music_lyric_path"));
             music.setMusicPic(rs.getString("music_pic"));
-
-
         }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -108,5 +106,39 @@ public class MusicDaoImpl implements MusicDao{
         return music;
     }
 
+    public List<Music> queryMusicRecomMost()throws SQLException {
+        List<Music> list = new ArrayList<Music>();
 
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        conn = DBUtils.getConnection();
+        String sql = "select * from music left join (select * from music_download order by music_id)where 1=1 limit 11 ";
+        ps = conn.prepareStatement(sql);
+        rs = ps.executeQuery();
+
+        Music music = null;
+        // 循环结果集
+        while (rs.next()) {
+            music = new Music();
+            music.setMusicId(rs.getInt("music_id"));
+            music.setMusicName(rs.getString("music_name"));
+            music.setMusicAuthor(rs.getString("music_author"));
+            music.setMusicAlbumId(rs.getInt("music_album_id"));
+            music.setMusicAlbum(rs.getString("album_name"));
+            music.setMusicPath(rs.getString("music_path"));
+            music.setMusicCreatedTime(rs.getTimestamp("music_created_time"));
+            music.setMusicLyricPath(rs.getString("music_lyric_path"));
+            music.setMusicPic(rs.getString("music_pic"));
+            list.add(music);
+        }
+        return list;
+    }
 }

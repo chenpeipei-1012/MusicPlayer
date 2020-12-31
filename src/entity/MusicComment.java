@@ -50,4 +50,15 @@ public class MusicComment {
     public void setComment_date(Timestamp comment_date) {
         this.comment_date = comment_date;
     }
+
+    @Override
+    public String toString() {
+        return "MusicComment{" +
+                "mc_id=" + mc_id +
+                ", music_id=" + music_id +
+                ", comment='" + comment + '\'' +
+                ", user_id=" + user_id +
+                ", comment_date=" + comment_date
+                ;
+    }
 }
