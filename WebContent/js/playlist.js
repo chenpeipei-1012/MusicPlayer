@@ -692,7 +692,9 @@ function viewMusicDetail(e){
 		 // 修改url
 		 history.pushState(null,null,"/MusicPlayer/user/display?musicId="+musicId);
 		 $.getScript("/MusicPlayer/js/display.js",function(){
-			 loadMusicInfo(musicId);
+			 // 通过musicId得到music
+			 var index = findMusicListIndex(musicId, musiclistArr);
+			 loadMusicInfo(musiclistArr[index]);
 		 });
 	});
         

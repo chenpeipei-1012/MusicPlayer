@@ -22,7 +22,7 @@
 		<div class="upon">
 			<!--显示专辑封面-->
 			<div class="showalbum">
-				<img id="songphoto" src="../image/109951165541304779.jpg" class="j-img" data-src="../image/109951165541304779.jpg"
+				<img id="songphoto" src="../image/109951165541304779.jpg" class="j-img"
 				style="position: absolute;
 				display: block;
 						height: 130px;
@@ -36,9 +36,9 @@
 			</div>
 			<!--歌曲详情展示区-->
 			<div class="background">
-				<div id="song" class="song">
+				<div id="" class="song">
 					<i class="mn-icn"></i>
-					踏山河
+					<span id="mname"></span>
 				</div>
 				<div class="fix_texture">
 					<p style="color: #333333;
@@ -46,62 +46,23 @@
 						margin-top: 0px;
 						margin-bottom: 0px;">歌手：
 						<span id="singer" title="是七叔呢" class="fix_texture">
-							<a class="fix_texture">是七叔呢</a>
+							<a class="fix_texture" id="mauthor"></a>
 						</span>
 					</p>
 				</div>
 				<div class="singer">
-					<p  "class="fix_texture">所属专辑：
-					<a id="album" style="color: #333333;">踏山河</a>
+					<p  class="fix_texture">所属专辑：
+					<a style="color: #333333;" id="malbum"></a>
 					</p>
 				</div>
 				<div id="lyric-content" class="lrc" data-song-id="1804320463" data-third-copy="false" ,="" copy-from="">
-					<p class="lyric-item">作词 : 祝何</p>
-					<p class="lyric-item">作曲 : 祝何</p>
-					<p class="lyric-item">编曲 : 祝何</p>
-					<p class="lyric-item">制作人 : 田跃君</p>
-					<p class="lyric-item">秋风落日入长河 江南烟雨行舟</p>
-					<p class="lyric-item">乱石穿空 卷起多少的烽火</p>
-					<p class="lyric-item">万里山河都踏过 天下又入谁手</p>
-					<p class="lyric-item">分分合合 不过几十载春秋</p>
-					<p class="lyric-item">我在 十面埋伏 四面楚歌的时候</p>
-					<p class="lyric-item">把酒与苍天对酌</p>
-					<p class="lyric-item">纵然一去不回 此战又如何</p>
-					<p class="lyric-item">谁见 万箭齐发 星火漫天夜如昼</p>
-					<p class="lyric-item">刀光剑影交错</p>
-					<p class="lyric-item">而我枪出如龙 乾坤撼动 一啸破苍穹</p>
-					<p class="lyric-item">长枪刺破云霞 放下一生牵挂</p>
-					
+					<div id="lyric-part">
+						
+					</div>
 
 					<!-- 更多 -->
 					<div id="flag_more" class="f-hide">
-						<p class="lyric-item">望着寒月如牙 孤身纵马 生死无话</p>
-						<p class="lyric-item">风卷残骑裂甲 血染万里黄沙</p>
-						<p class="lyric-item">成败笑谈之间 与青史留下</p>
-						<p class="lyric-item">我在 十面埋伏 四面楚歌的时候</p>
-						<p class="lyric-item">把酒与苍天对酌</p>
-						<p class="lyric-item">纵然一去不回 此战又如何</p>
-						<p class="lyric-item">谁见 万箭齐发 星火漫天夜如昼</p>
-						<p class="lyric-item">刀光剑影交错</p>
-						<p class="lyric-item">而我枪出如龙 乾坤撼动 一啸破苍穹</p>
-						<p class="lyric-item">长枪刺破云霞 放下一生牵挂</p>
-						<p class="lyric-item">望着寒月如牙 孤身纵马 生死无话</p>
-						<p class="lyric-item">风卷残骑裂甲 血染万里黄沙</p>
-						<p class="lyric-item">成败笑谈之间 与青史留下</p>
-						<p class="lyric-item">长枪刺破云霞 放下一生牵挂</p>
-						<p class="lyric-item">望着寒月如牙 孤身纵马 生死无话</p>
-						<p class="lyric-item">风卷残骑裂甲 血染万里黄沙</p>
-						<p class="lyric-item">笑谈间 谁能流下</p>
-						<p class="lyric-item">吉他 : 潘春宇</p>
-						<p class="lyric-item">混音 : 唐瑜</p>
-						<p class="lyric-item">和声 : 田跃君</p>
-						<p class="lyric-item">宣传推广 : +7/孙康怀</p>
-						<p class="lyric-item">监制 : 蒋雪儿 Snow.J/游文雅</p>
-						<p class="lyric-item">统筹 : 林宝川</p>
-						<p class="lyric-item">出品 : 青风音乐 X 造音行动</p>
-						<p class="lyric-item">OP : 青风音乐Cheerful Music</p>
-						<p class="lyric-item">SP : 乐无限Eternal Music</p>
-						<p class="lyric-item">【未经授权不得翻唱或使用】</p>
+						
 					</div>
 					<div class="crl">
 						<a class="flag_ctrl" href="javascript:void(0)">
@@ -170,29 +131,36 @@
 		<div class="bott">
 			<!--评论标题-->
 			<div class="commentitle">
-			<h3><span class="">评论</span></h3><span class="">
+			<h3><span class="">评论</span></h3>
 			</div>
 			<div class="mcom">
 				<!--用户头像-->
 				<div class="comholder">
 					<div id="tx" class="touxiang">
-						<img src="../image/picture.jpg?param=50y50" width="100%" height="100%">
+					<%@ page import="entity.*" %>
+					<%
+						String url = "";
+						if(user != null){
+							url = "/MusicPlayer/" + user.getUserPic();
+						}
+					%>
+						<img id="user-pic" src=<%=url %> width="100%" height="100%">
 					</div>
 					<!--评论框-->
 					<div class="com-wrap">
-						<textarea  id= comment""class="block" data-type=""placeholder="评论" id="auto-id-2FTxFN1VQvwuMCrl" style="    width: 800px;
+						<textarea  id="comment" class="block" placeholder="评论" id="auto-id-2FTxFN1VQvwuMCrl" style="    width: 800px;
    height: 50px;"></textarea>
 					</div>
 				</div>
 				<div class="cbtn-wrap">
-						<a class="com-btn">评论</a>
+						<a class="com-btn" id="addComment">评论</a>
 				</div>
 			</div>
 					
 				
 				<!--精彩评论-->
-				<h3 class="u-hd4">精彩评论</h3>
-				<div id="51829862001609074750161" class="itm" data-id="5182986200">
+				<h3 class="u-hd4">最新评论</h3>
+				<div id="51829862001609074750161" class="itm">
 					<div >
 						<a  id="u1" href="/user/home?id=629762038">
 						<img ass="touxiang" src="https://p1.music.126.net/BB_HxUD8Rdly-xxSsETdqw==/109951165161329042.jpg?param=50y50"></a>
@@ -242,4 +210,15 @@
 	<script src="../js/head.js"></script>
 	<script src="../js/foot.js"></script>
 	<script src="../js/display.js"></script>
+	<script>
+	<%@ page import="net.sf.json.JSONObject"%>
+	$(document).ready(function() {
+	      $().ready(function() {
+	    	  // 页面加载完毕后执行
+	    	  // 拿到music对象
+	    	  var music = <%=request.getAttribute("music") %>;
+	    	  loadMusicInfo(music);
+	      });
+    });
+	</script>
 </html>

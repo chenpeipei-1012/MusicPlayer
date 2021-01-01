@@ -79,8 +79,11 @@ constraint foreign_mid foreign key(mid) references music(music_id)
 create table music_comment(
 mc_id int(11) primary key auto_increment,
 music_id int(11) not null,
-comment varchar(100) not null,
-constraint foreign_mc_mid foreign key(music_id) references music(music_id)
+user_id int(11) not null,
+comment varchar(1000) not null,
+comment_date timestamp not null default current_timestamp,
+constraint foreign_mc_mid foreign key(music_id) references music(music_id),
+constraint foreign_mc_uid foreign key(user_id) references user(user_id)
 );
 
 /* 8: 歌曲下载记录表 */

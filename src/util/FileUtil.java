@@ -17,11 +17,11 @@ public class FileUtil {
 	public static String uploadFileToProject(FileItemIterator iter,String savePath,String prefix){
 		String filePath = "";
 		
-		int i = 0;
+		// int i = 0;
         try {
             
             while(iter.hasNext()){
-                i++;
+                // i++;
                 // 获取文件输入流
                 FileItemStream fileItemStream = iter.next();
                 InputStream in = null;

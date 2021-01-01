@@ -220,8 +220,6 @@ $(".lock").click(function(){
 		    	
 		    	$("#lyric").empty();
 		    	$("#lyric").append(content);
-		    	
-		    	
 		    },
 		    error : function(errorMsg) {
 		        //请求失败时执行该函数

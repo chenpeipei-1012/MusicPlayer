@@ -1,6 +1,6 @@
 package dao.impl;
 
-import dao.AlbumDao
+import dao.AlbumDao;
 import entity.Album;
 import entity.Music;
 

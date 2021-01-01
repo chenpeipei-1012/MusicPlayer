@@ -3,10 +3,12 @@ package dao.impl;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import util.DBUtils;
 import dao.MusicDao;
 import entity.Music;
+import entity.MusicDownload;
 
 public class MusicDaoImpl implements MusicDao{
 
@@ -46,63 +48,32 @@ public class MusicDaoImpl implements MusicDao{
 		return list;
 	}
 
-    public Music getMusicById(Integer id){
-	    Music music = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        Connection conn=null;
-        PreparedStatement ps=null;
-        ResultSet rs=null;
-        try {
-        String sql="";
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","123456");
-        sql="select * from music where music_id=?";
-        ps=conn.prepareStatement(sql);
+	@Override
+    public Music getMusicById(Integer id) throws SQLException{
+		Connection conn = DBUtils.getConnection();
+        String sql="select * from music " + 
+						"LEFT JOIN album " + 
+						"ON music.music_album_id = album.album_id " + 
+						"where music_id = ?";
+        
+        PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1,id);
-        rs=ps.executeQuery();
+        
+        ResultSet rs=ps.executeQuery();
 
-        while (rs.next()) {
+        Music music = null;
+        if (rs.next()) {
             music=new Music();
             music.setMusicId(rs.getInt("music_id"));
             music.setMusicName(rs.getString("music_name"));
             music.setMusicAuthor(rs.getString("music_author"));
-            music.setMusicAlbumId(rs.getInt("music_album_id"));
             music.setMusicAlbum(rs.getString("album_name"));
             music.setMusicPath(rs.getString("music_path"));
             music.setMusicCreatedTime(rs.getTimestamp("music_created_time"));
             music.setMusicLyricPath(rs.getString("music_lyric_path"));
             music.setMusicPic(rs.getString("music_pic"));
         }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if(rs!=null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(ps!=null)
-            {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(conn!=null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        
         return music;
     }
 
@@ -141,4 +112,22 @@ public class MusicDaoImpl implements MusicDao{
         }
         return list;
     }
+
+	@Override
+	public void addMusicDownloadRecord(int musicId) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Map<String, Integer> queryCurMusicAandUserNum() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MusicDownload> queryDownloadNum() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

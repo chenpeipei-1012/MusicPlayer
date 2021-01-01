@@ -346,6 +346,7 @@ ul {
     text-align: center;
     line-height: 25px;
     float: right;
+    cursor: pointer;
 }
 
 .cbtn-wrap{
