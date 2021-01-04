@@ -104,7 +104,7 @@ public class PlayListServlet extends HttpServlet {
 		
 		try {
 			// 查询所有歌单信息
-			userMusicList = userMusicListDao.queryMusicList(1);
+			userMusicList = userMusicListDao.queryMusicList(userId);
 			// 得到该用户的喜欢歌单列表ID
 			
 			// 查询我喜欢的音乐：根据歌单ID得到歌曲列表

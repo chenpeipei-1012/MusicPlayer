@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>余音 播放器</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./assets/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="./assets/css/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./assets/css/adminlte.min.css">
+
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>余音 </b>播放器</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">注册</p>
+
+      <form id="flogin"  method="POST"  action="Register" onclick="return userRegister();">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="用户名" name="username" id="username">
+          <div class="input-group-append">
+            <div class="input-group-text" id="u-img">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="密码" name="password" id="password">
+          <div class="input-group-append">
+            <div class="input-group-text" id="p-img">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="确认密码" name="password1" id="password1">
+            <div class="input-group-append">
+              <div class="input-group-text" id="p-img1">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+        <div class="row" id="login-error-wrap" style="display:none;">
+			<div class="col-8 error">
+			    <img src="image/error.png" class="l-img-error"/>
+				<span id="login-err-msg"></span>
+			</div>
+		</div>
+        
+
+        
+        <div class="social-auth-links text-center mb-3">
+			<p></p>
+			<input type="submit" class="btn btn-block btn-primary" value="注册"/>
+		</div>
+      </form>
+
+      <!-- /.social-auth-links -->
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+</body>
+	<script src="js/jquery-1.8.3.js"></script>
+	<script src="js/register.js"></script>
+</html>

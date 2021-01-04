@@ -12,34 +12,54 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONObject;
+import dao.CategoryDao;
 import dao.MusicDao;
+import dao.impl.CategoryDaoImpl;
 import dao.impl.MusicDaoImpl;
+import entity.Category;
 import entity.Music;
 
-@WebServlet("/recommend")
-public class RecommendSimilarServlet extends HttpServlet {
+@WebServlet("/hotCategory")
+public class HotCategoryServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int musicType = Integer.parseInt(request.getParameter("musicTypeId"));
-		System.out.println("musicType: " + musicType);
+		String musicTypeStr = request.getParameter("categoryId");
+		int musicType = -1;
+		System.out.println("musicType: " + musicTypeStr);
 		
 		PrintWriter out = response.getWriter();
 		// JSON对象
 		JSONObject json = new JSONObject();
+		
+		CategoryDao categoryDao = new CategoryDaoImpl();
+		MusicDao musicDao = new MusicDaoImpl();
 				
-		List<Music> recommendMusics = null;
+		List<Object[]> hotMusics = null;
+		List<Category> categoryList = null;
 		boolean isSuccess = false;
+		
 		try {
-			MusicDao musicDao = new MusicDaoImpl();
-			recommendMusics = musicDao.querySimilarSongs(musicType,10);
+			//
+			if(musicTypeStr == null || "".equals(musicTypeStr)){
+				// 查询类别
+				categoryList = categoryDao.queryAllCategory();
+				json.put("categoryList", categoryList);
+				// 第一个类别
+				musicType = categoryList.get(0).getCategory_id();
+			}else{
+				musicType = Integer.parseInt(musicTypeStr);
+			}
+			
+			hotMusics = musicDao.queryTopSaveSongsBymusicType(musicType);
 			
 			isSuccess = true;
+			json.put("hotMusics", hotMusics);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{
-			json.put("recommendMusics", recommendMusics);
 			json.put("isSuccess", isSuccess);
 			
 			// 把数据响应给AJAX
@@ -49,6 +69,9 @@ public class RecommendSimilarServlet extends HttpServlet {
 		}
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}

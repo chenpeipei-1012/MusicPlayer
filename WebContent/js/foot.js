@@ -500,8 +500,9 @@ $(".lock").click(function(){
 	
 	// 找到musiclist.id对应的下标
 	function findMusicListIndex(id,arr){
+		var musicId = parseInt(id);
 		for(var i=0;i<arr.length;i++){
-			if(arr[i].musicId == id){
+			if(arr[i].musicId == musicId){
 				return i;
 			}
 		}
@@ -630,6 +631,11 @@ function queryAndFillSavePop(musicId){
 	    dataType : "json",        //返回数据形式为json
 	    
 	    success : function(result) {
+	    	if(result.isLogin == "no"){
+	    		popTips(false,"登录即可收藏歌曲");
+	    		return;
+	    	}
+	    	
 	    	fillPopContent(result.playlist);
 	    	
 	    	// 添加点击事件
@@ -744,4 +750,51 @@ function playMusic(){
 		initMusic();
 		rem.audio.play();
 	}
+}
+
+function addListToBePlay(musiclistArr){
+	// 循环加入
+	var cruIndex;
+	for(var i=0;i<musiclistArr.length;i++){
+		cruIndex = findMusicListIndex(musiclistArr[i].musicId,musicList);
+
+		if(cruIndex == -1){
+			// 没有则加入
+			cruIndex = musicList.push(musiclistArr[i]);
+			cruIndex--;
+		}
+		
+		if(i == 0){
+			curMusic = cruIndex;
+		}
+	}
+}
+
+// 查看音乐详情
+function loadMusicDetail(musicId,musiclistArr){
+	// 加载详情页面
+	// 移除原有的信息
+	$(".content").empty();
+	
+	// 移除和添加css文件信息css/footer.css"/>
+	removejscssfile("setting.css","css");
+	removejscssfile("playlist.css","css");
+	addCss('/MusicPlayer/css/display.css');
+
+	// 加载content内容
+	$(".content").load("/MusicPlayer/display.jsp #container",function(){
+		 // 修改url
+		 history.pushState(null,null,"/MusicPlayer/display?musicId="+musicId);
+		 // 定义变量
+		 
+		 
+		 $.getScript("/MusicPlayer/js/display.js",function(){
+			 // 通过musicId得到music
+			 var index = findMusicListIndex(musicId, musiclistArr);
+			 var music = musiclistArr[index];
+			 initDisplayPage(music);
+		 });
+	});
+        
+        
 }

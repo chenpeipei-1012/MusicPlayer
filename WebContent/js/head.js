@@ -69,7 +69,8 @@
 		    	
 		    	// 移除原有的信息
 		    	$(".content").empty();
-		    	
+		    	removejscssfile("index.js","css");
+		    	// removejscssfile("index.css","css");
 		    	removejscssfile("setting.css","css");
 		    	addCss('/MusicPlayer/css/pop.css');
 		    	addCss('/MusicPlayer/css/playlist.css');

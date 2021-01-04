@@ -307,10 +307,11 @@
 	border-radius: 5px;
 }
 .listhd{
-	height: 41px;
+	height: 40px;
 	width: 100%;
 	background: url("../image/playlist_bg.png") no-repeat 0 0;
 	color: white;
+	
 }
 .listhd-wrap{
 	height: 40px;

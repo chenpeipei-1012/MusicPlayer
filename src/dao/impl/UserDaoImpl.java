@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -148,6 +149,61 @@ public class UserDaoImpl implements UserDao{
 		DBUtils.closeConnection(conn);
 		
 		return user;
+	}
+
+	@Override
+	public boolean insertUser(String userName, String password)
+			throws SQLException {
+		Connection conn = DBUtils.getConnection();
+		String sql = "insert into user (user_name, user_pwd,user_nick,user_pic) values(?,?,?,?)";
+		boolean result = false;
+		// 预准备Statement
+		PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+		// 给参数赋值
+		stmt.setString(1, userName);
+		stmt.setString(2, password);
+		stmt.setString(3, userName);
+		stmt.setString(4, "musicCloud/userPic/default_user_pic.jpg");
+		
+		int userId = -1;
+		// 执行SQL
+		stmt.executeUpdate();
+		ResultSet rs = stmt.getGeneratedKeys();
+
+		if (rs.next()) {
+			userId = rs.getInt(1); 
+			result = true;
+        }
+		
+		DBUtils.closeConnection(conn);
+		
+		addDefault(userId,1);
+		addDefault(userId,2);
+		return result;
+	}
+	
+	public void addDefault(int userId,int type) throws SQLException {
+		Connection conn = DBUtils.getConnection();
+		String sql = "insert into user_musiclist(list_name,list_uid,list_love) values(?,?,?)";
+
+		
+		// 预准备Statement
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		String listName = "";
+		if(type == 1){
+			listName = "我喜欢的音乐";
+		}else if(type == 2){
+			listName = "默认收藏";
+		}
+		// 给参数赋值
+		stmt.setString(1, listName);
+		stmt.setInt(2, userId);
+		stmt.setInt(3, type);
+		
+		// 执行SQL
+		boolean result = stmt.execute();
+		// 关闭连接
+		DBUtils.closeConnection(conn);
 	}
 
 }

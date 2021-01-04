@@ -21,5 +21,6 @@ public interface UserDao {
 	// 根据用户名查询用户
 	public User queryUserInfoByName(String userName) throws SQLException;
 	
-	// 得到近一周新增用户数量
+	//插入用户
+	public boolean insertUser(String userName,String password) throws SQLException;
 }

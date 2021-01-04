@@ -46,6 +46,8 @@ public class DashboardServlet extends HttpServlet {
 			numMap = musicDao.queryCurMusicAandUserNum();
 			
 			int activeSessionsNum = SessionCounter.getActiveSessions();
+			System.out.println("activeSessionsNum:" + activeSessionsNum);
+			
 			numMap.put("activeSessionsNum", activeSessionsNum);
 			
 			// 近一周歌曲下载量

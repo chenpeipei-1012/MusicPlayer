@@ -297,5 +297,5 @@ function isLogin(tipMsg){
 		return false;
 	}
 	
-	return true
+	return true;
 }

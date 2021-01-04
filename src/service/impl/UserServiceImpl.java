@@ -41,4 +41,18 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public boolean saveUser(String userName, String password) {
+		UserDao userDao = new UserDaoImpl();
+		
+		boolean result = false;
+		
+		try {
+			result =  userDao.insertUser(userName, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

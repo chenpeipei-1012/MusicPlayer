@@ -26,7 +26,11 @@
         <a href="javascript:void(0);" class="login">登录</a>	
         <%  
         	}else{
-        		String url = "/MusicPlayer/" + user.getUserPic();
+        		String url = "/MusicPlayer/musicCloud/userPic/default_user_pic.jpg";
+        		if(user.getUserPic() != null){
+        			url = "/MusicPlayer/" + user.getUserPic();
+        		}
+        		
         %>	
 		<!-- 第二种情况：已登录，显示用户头像-->
 		<div class="profile" id="profile" style="background: url(<%=url %>) no-repeat center center;background-size: cover;"></div>  

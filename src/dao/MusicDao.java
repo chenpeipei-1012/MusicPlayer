@@ -6,12 +6,16 @@ import java.util.Map;
 
 import entity.Music;
 import entity.MusicDownload;
+import entity.Pagination;
 
 public interface MusicDao {
 
 	// 分页查询歌曲
-	public List<Music> queryMusicByPaging(int offset,int pageSize) throws SQLException;
+	public List<Music> queryMusicByPaging(Pagination page,String condition) throws SQLException;
 
+	// 根据查询条件得到歌曲总数
+	public int getMusicCountByCondition(String condition) throws SQLException;
+	
 	// 记录歌曲下载
 	public void addMusicDownloadRecord(int musicId) throws SQLException;
 	
@@ -23,9 +27,16 @@ public interface MusicDao {
 	
 	// 通过歌曲ID获得歌曲对象
 	public Music getMusicById(int id) throws SQLException;
-
-	public List<Music> queryMusicRecomMost()throws SQLException;
 	
 	// 得到与这首歌类似的歌曲列表
-	public List<Music> querySimilarSongs(int musicType) throws SQLException;
+	public List<Music> querySimilarSongs(int musicType,int count) throws SQLException;
+	
+	// 得到收藏量排名前10歌曲
+	public List<Music> queryTopSaveSongs() throws SQLException;
+	
+	// 得到下载量排名前10的歌曲
+	public List<Music> queryTopDownloadSongs() throws SQLException;
+	
+	// 得到某种类型的收藏前8的歌曲
+	public List<Object[]> queryTopSaveSongsBymusicType(int musicType) throws SQLException;
 }

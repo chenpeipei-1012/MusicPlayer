@@ -127,9 +127,9 @@ insert into music(music_name,music_author,music_album_id,music_path,music_lyric_
 insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic,music_duration) values('繁花','董贞',5,'musicCloud/music/董贞_繁花.mp3','musicCloud/lyric/董贞_繁花_5.txt',5,'musicCloud/musicPic/董贞_繁花_5.jpg','03:45');
 INSERT INTO `music` VALUES ('6', '关山酒 ', '等什么君', '7', 'musicCloud/musicPic/关山酒.jpg', 'musicCloud/music/关山酒.mp3', '2021-01-02 15:36:44', 'musicCloud/lyric/关山酒_等什么君.txt', '1', '03:54');
 INSERT INTO `music` VALUES ('7', '归去来兮', '花粥', '6', 'musicCloud/musicPic/归去来兮_花粥.jpg', 'musicCloud/music/归去来兮_花粥.mp3', '2021-01-02 15:41:20', 'musicCloud/lyric/归去来兮_花粥.txt', '1', '03:26');
-INSERT INTO `music` VALUES ('8', '悟空', '戴荃', '6', 'musicCloud/musicPic/悟空_戴荃.jpg', 'musicCloud/music/悟空_戴荃.mp3 ', '2021-01-02 15:45:53', 'musicCloud/lyric/悟空_戴荃.txt', '1', '03:20');
+INSERT INTO `music` VALUES ('8', '悟空', '戴荃', '6', 'musicCloud/musicPic/悟空_戴荃.jpg', 'musicCloud/music/悟空_戴荃.mp3', '2021-01-02 15:45:53', 'musicCloud/lyric/悟空_戴荃.txt', '1', '03:20');
 INSERT INTO `music` VALUES ('9', '断桥残雪', '许嵩', '6', 'musicCloud/musicPic/断桥残雪_许嵩.jpg', 'musicCloud/music/断桥残雪_许嵩.mp3', '2021-01-02 15:51:15', 'musicCloud/lyric/断桥残雪_许嵩.txt', '1', '03:47');
-INSERT INTO `music` VALUES ('10', '醉赤壁', '林俊杰', '6', 'musicCloud/musicPic/醉赤壁_林俊杰 .jpg', 'musicCloud/music/醉赤壁_林俊杰.mp3 ', '2021-01-02 19:25:36', 'musicCloud/lyric/醉赤壁_林俊杰.txt', '1', '04:41');
+INSERT INTO `music` VALUES ('10', '醉赤壁', '林俊杰', '6', 'musicCloud/musicPic/醉赤壁_林俊杰 .jpg', 'musicCloud/music/醉赤壁_林俊杰.mp3', '2021-01-02 19:25:36', 'musicCloud/lyric/醉赤壁_林俊杰.txt', '1', '04:41');
 INSERT INTO `music` VALUES ('11', '声声慢', '崔开潮', '6', 'musicCloud/musicPic/声声慢_崔开潮.jpg', 'musicCloud/music/声声慢_崔开潮.mp3', '2021-01-02 19:31:12', 'musicCloud/lyric/声声慢_崔开潮.txt', '1', '03:32');
 INSERT INTO `music` VALUES ('12', '执迷不悟', '鱿籽酱', '6', 'musicCloud/musicPic/执迷不悟_鱿籽酱.jpg', 'musicCloud/music/执迷不悟_鱿籽酱.mp3', '2021-01-02 19:57:38', 'musicCloud/lyric/执迷不悟_鱿籽酱.txt', '2', '03:00');
 INSERT INTO `music` VALUES ('13', '踏山河', '是七叔呢', '6', 'musicCloud/musicPic/踏山河_是七叔呢.jpg', 'musicCloud/music/踏山河_是七叔呢.mp3', '2021-01-02 19:58:41', 'musicCloud/lyric/踏山河_是七叔呢.txt', '2', '02:48');

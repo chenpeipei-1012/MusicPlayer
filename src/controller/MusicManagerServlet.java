@@ -16,6 +16,7 @@ import net.sf.json.JSONObject;
 import dao.MusicDao;
 import dao.impl.MusicDaoImpl;
 import entity.Music;
+import entity.Pagination;
 
 /**
  * Servlet implementation class MusicManagerServlet
@@ -29,20 +30,29 @@ public class MusicManagerServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int curPage = Integer.parseInt(request.getParameter("curPage"));
+		String condition = request.getParameter("condition");
+		
 		System.out.println("curPage:" + curPage);
+		System.out.println("condition:" + condition);
 		
 		PrintWriter out = response.getWriter();
 		// JSON∂‘œÛ
 		JSONObject json = new JSONObject();
 		
-		int pageSize = 10;
-		int offset = (curPage - 1) * pageSize;
 		MusicDao musicDao = new MusicDaoImpl();
 		
 		List<Music> musicList = null;
 		try {
-			musicList = musicDao.queryMusicByPaging(offset, pageSize);
+			Pagination page = new Pagination();
+			page.setCurPage(curPage);
+			page.setPageSize(5);
+			
+			musicList = musicDao.queryMusicByPaging(page,condition);
+			int musicCount = musicDao.getMusicCountByCondition(condition);
+			page.setTotal(musicCount);
+			
 			json.put("musicList", musicList);
+			json.put("page", page);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{

@@ -35,14 +35,8 @@
               <p>首页</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>用户管理</p>
-            </a>
-          </li>
           <li class="nav-item active ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="./music-manage.html">
               <i class="material-icons">content_paste</i>
               <p>歌曲管理</p>
             </a>
@@ -129,18 +123,13 @@
 				  <!-- 分页展示 -->
 				  <div class="row">
 					 <div class="col-sm-12 col-md-5">
-						 <div class="dataTables_info">Showing 1 to 10 of 57 entries
+						 <div class="dataTables_info">第 1 页，共 6 页 
 						 </div> 
 				     </div>
-					 <div class="col-sm-12 col-md-7">
-						 <div class="dataTables_paginate paging_simple_numbers">
-							 <ul class="pagination">
-								 <li class="paginate_button page-item previous">
-									 <a href="" class="page-link">Previous</a>
-								 </li>
-								 <li class="paginate_button page-item next">
-									 <a href="" class="page-link">Next</a>
-								 </li>
+					 <div class="col-sm-12 col-md-7" style="text-align: right;">
+						 <div class="dataTables_paginate paging_simple_numbers" style="display: inline-block;">
+							 <ul class="pagination" id="pagination">
+								 
 							 </ul>
 						 </div>
 					 </div>	 
@@ -174,7 +163,6 @@
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
   <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
   <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
   <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->

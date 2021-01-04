@@ -57,6 +57,7 @@ public class ParmissionFilter implements Filter {
 				System.out.println("user == null");
 			}else{
 				// pass
+				System.out.println("getUserId :" + user.getUserId());
 				chain.doFilter(request, response);
 			}
 		}else{

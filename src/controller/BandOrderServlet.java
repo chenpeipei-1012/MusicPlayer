@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,38 +11,45 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
+import dao.BandOrderDao;
 import dao.MusicDao;
+import dao.impl.BandOrderDaoImpl;
 import dao.impl.MusicDaoImpl;
 import entity.Music;
-
-@WebServlet("/recommend")
-public class RecommendSimilarServlet extends HttpServlet {
-	
+/**
+ * Servlet implementation class BandOrderServlet
+ */
+@WebServlet("/bandOrder")
+public class BandOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int musicType = Integer.parseInt(request.getParameter("musicTypeId"));
-		System.out.println("musicType: " + musicType);
-		
 		PrintWriter out = response.getWriter();
 		// JSON对象
 		JSONObject json = new JSONObject();
 				
-		List<Music> recommendMusics = null;
-		boolean isSuccess = false;
+		List<Music> newMusicList = new ArrayList<>();
+		List<Music> saveMusicList = new ArrayList<>();
+		List<Music> downloadMusicList = new ArrayList<>();
+		
+		BandOrderDao bandOrderDao = new BandOrderDaoImpl();
+		MusicDao musicDao = new MusicDaoImpl();
+		
 		try {
-			MusicDao musicDao = new MusicDaoImpl();
-			recommendMusics = musicDao.querySimilarSongs(musicType,10);
 			
-			isSuccess = true;
+			newMusicList = bandOrderDao.orderByUpdata();
+			saveMusicList = musicDao.queryTopSaveSongs();
+			downloadMusicList = musicDao.queryTopDownloadSongs();
+			
+			json.put("newMusicList", newMusicList);
+			json.put("saveMusicList", saveMusicList);
+			json.put("downloadMusicList", downloadMusicList);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{
-			json.put("recommendMusics", recommendMusics);
-			json.put("isSuccess", isSuccess);
-			
 			// 把数据响应给AJAX
 	        out.print(json);
 			out.flush();
@@ -49,8 +57,12 @@ public class RecommendSimilarServlet extends HttpServlet {
 		}
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

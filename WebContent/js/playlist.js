@@ -83,29 +83,12 @@ function fillMusicListInfo(curList){
 		$('#list-play').click(function(){
 			// 将当前歌单数据加到带播放列表中 concat连接    push：放元素
 			
-			// 循环加入
-			var cruIndex;
-			for(var i=0;i<musiclistArr.length;i++){
-				cruIndex = findMusicListIndex(musiclistArr[i].musicId,musicList);
-
-				if(cruIndex == -1){
-					// 没有则加入
-					cruIndex = musicList.push(musiclistArr[i]);
-					cruIndex--;
-				}
-				
-				if(i == 0){
-					curMusic = cruIndex;
-				}
-			}
-
-			
+			addListToBePlay(musiclistArr);
 			playMusic();
 			
 		});
 	}
 }
-
 
 
 // 填充左侧歌单
@@ -642,29 +625,5 @@ function viewMusicDetail(e){
 	// 截取table-rows-1
 	var musicId = id.substring(id.lastIndexOf("-")+1);
 	
-	// 加载详情页面
-	// 移除原有的信息
-	$(".content").empty();
-	
-	// 移除和添加css文件信息css/footer.css"/>
-	removejscssfile("setting.css","css");
-	removejscssfile("playlist.css","css");
-	addCss('/MusicPlayer/css/display.css');
-
-	// 加载content内容
-	$(".content").load("/MusicPlayer/display.jsp #container",function(){
-		 // 修改url
-		 history.pushState(null,null,"/MusicPlayer/display?musicId="+musicId);
-		 // 定义变量
-		 
-		 
-		 $.getScript("/MusicPlayer/js/display.js",function(){
-			 // 通过musicId得到music
-			 var index = findMusicListIndex(musicId, musiclistArr);
-			 var music = musiclistArr[index];
-			 initDisplayPage(music);
-		 });
-	});
-        
-        
+	loadMusicDetail(musicId,musiclistArr);    
 }

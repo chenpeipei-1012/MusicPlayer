@@ -8,7 +8,7 @@
 html,body{
 	width:100%;
 	height:100%;
-	/* 閿熸枻鎷烽敓绲檕dy閿熺殕杈炬嫹閿熸枻鎷�8px閿熸枻鎷烽敓鏂ゆ嫹鍛旈敓锟� */
+	/* ���body�Դ���8px����߾� */
 	margin: 0;
 }
 body{
@@ -16,7 +16,7 @@ body{
     padding-bottom: 67px;
 	overflow: hidden;
 	box-sizing: border-box;
-	/*background-color: #ECE3DA;*/
+	background-color: #f2f2f2;
 	height: 100%;
 }
 
@@ -45,12 +45,8 @@ body{
 }
 
 */
-.banner{
-    background:linear-gradient(to right ,#211f2028 0%,#211f20 30%,#211f20 70%,#211f2028 100%);
-    /* linear-gradient(to left ,#211f20ee,#211f2000); */
-}
 
-.img-banner{
+.banner{
     width: 1000px;
     height: 350px;
     margin: auto;
@@ -156,7 +152,7 @@ body{
     color: black;
     background-color: #E8CCC9;
     padding:15px 25px;
-    margin:  0 50px;
+    margin:  0 35px;
     border-radius: 20%;
     margin-top: 5px;
     float: left;
@@ -173,7 +169,6 @@ body{
 .down-cont{
     width: 1000px;
     margin:-20px auto;
-    padding-top: 20px;
 }
 
 .l-content{
@@ -189,14 +184,12 @@ body{
     float: left;
     background-color: white;
     padding-bottom: 45px;
-    
 }
 
 .hotm-nav {
     height: 25px;
     width: auto;
     border-bottom:5px solid #E8CCC9;
-    margin-top:20px;
     
 }
 
@@ -214,17 +207,15 @@ body{
     color: black;
 }
 
-.x{
+.h img{
     height: 140px;
     width: 140px;
-   padding-left: 5px;
     /* text-shadow: 2px 2px 5px black; */
 }
 
 .hotm-nav-1{
     font-size: 20px;
     font-weight: bold;
-     margin-left:25px;
 }
 
 .hotm-nav a{
@@ -260,7 +251,6 @@ body{
   width: auto;
   height: 25px;
   /* float: left; */
-  margin-bottom:23px;
   border-bottom: 5px solid #E8CCC9 ;
 }
 
@@ -415,7 +405,7 @@ body{
 
 .logoin{
     width: 170px;
-    height:200px;
+    height:95px;
     float: right;
     background-color: #E8CCC9;
     padding-left: 15px;
@@ -433,7 +423,7 @@ body{
     text-align: center;
     border: 2px solid white;
     float: left;
-    margin-top: 60px;
+    margin-top: 12px;
     margin-left: 25px;
 }
 
@@ -446,7 +436,7 @@ body{
 
 .bandRec{
     width: 185px;
-    height: 700px;
+    height: 400px;
     background-color: #E8CCC9;
     float: right;
     padding-top: 15px;
@@ -500,64 +490,4 @@ body{
     background-color: #E8CCC9;
     float: right;
     padding-top: 15px;
-}
-
-.u-bottom{
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.486);
-    /* 瑕佽�冭檻bottom銆乼op鐨�1px瀹炵嚎 */
-    margin-top: -70px;
-    /* border-top:1px solid black ;
-    border-bottom: 1px solid black; */
-    display: block;
-    width: 140px;
-}
-
-.u-bottom-1{
-    float: right;
-    display: block;
-    width: 10px;
-    /* background: url(../image/Play_Music_32px_1178409_easyicon.net.png) no-repeat; */
-}
-
-.player{
-    /* float: right; */
-    /* display: block; */
-    width: 16px;
-    margin: 5px 0 1px -9px;
-    /* background: url(../image/Play_Music_32px_1178409_easyicon.net.png); */
-}
-
-.icon-headset{
-    float: left;
-    display: block;
-    /* width: 16px; */
-    margin: 5px 3px 0px 5px;
-}
-
-.nb{
-    float: left;
-    margin: 6px 0 3px 0;
-    color: rgba(0, 0, 0, 0.7);
-    font-size:12px;
-}
-
-.hotM{
-    display: block;
-    margin-top: 5px;
-    height: 40px;
-    padding-left: 5px;
-}
-
-.play{
-    outline: none;
-}
-
-.open{
-    float: right;
-    margin: 6px 13px;
-}
-
-.open1{
-    display: inline-block;
 }

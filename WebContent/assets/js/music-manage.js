@@ -1,14 +1,14 @@
 // 变量，记录当前被选中的行数
 var checkedRowNum = 0;
 
-requestData();
+requestData(1,"");
 
-function requestData(){
+function requestData(curPage,condition){
 	// GET请求加载页面数据
 	$.ajax({
 	    type : "GET",
 	    async : true,         
-	    url : "/MusicPlayer/admin/music-manage?curPage=1&date=" + new Date().getTime(),    
+	    url : "/MusicPlayer/admin/music-manage?curPage=" + curPage + "&condition=" + condition + "&date=" + new Date().getTime(),    
 	    dataType : "json",
 	    
 	    success : function(result) {
@@ -39,6 +39,62 @@ function requestData(){
                 
 	    		$("#music-manage-table").empty();
 	    		$("#music-manage-table").append(content);
+	    		
+	    		
+	    	}
+	    	var page= result.page;
+	    	if(page != null){
+	    		// 填充下方的分页控件
+	    		var pageInfo = "第 " + page.curPage + " 页，共 " + page.totalPage+ " 页 ";
+	    		$(".dataTables_info").empty();
+	    		$(".dataTables_info").append(pageInfo);
+	    		
+	    		// 右侧
+	    		var pageController = "";
+	    		pageController += '<li class="paginate_btn page-item pre">'+
+									  '<a href="javascript:void(0);" class="p-link" onclick="prePage()">上一页</a>'+
+								  '</li>';
+	    		if(page.totalPage <=5){
+	    			for(var i=1;i<=page.totalPage;i++){
+	    				pageController += '<li class="paginate_btn page-item" id="page-' + i + '">'+
+											  '<a href="javascript:void(0);" class="p-link" onclick="jumpToPage(this)">' + i + '</a>'+
+										  '</li>';
+	    			}
+	    			
+	    		}else{
+	    			// 超过5页  1 2 3 ... 6
+	    			var pageNum = null;
+	    			if(page.curPage <= 3 ){
+	    				pageNum = [1,2,3,"...",page.totalPage];
+	    			}else if(page.curPage  >= page.totalPage - 2){
+	    				pageNum = [1,"...",page.totalPage - 2,page.totalPage - 1,page.totalPage];
+	    			}else{
+	    				pageNum = [1,"...",page.curPage,"...",page.totalPage];
+	    			}
+	    			
+	    			// 
+	    			for(var i=0;i<pageNum.length;i++){
+	    				if(pageNum[i] != "..."){
+	    					pageController += '<li class="paginate_btn page-item" id="page-' + pageNum[i] + '">'+
+												  '<a href="javascript:void(0);" class="p-link" onclick="jumpToPage(this)">' + pageNum[i] + '</a>'+
+											  '</li>';
+	    				}else{
+	    					pageController += '<li class="paginate_btn page-item disabled">'+
+												  '<a href="javascript:void(0);" class="p-link" onclick="prePage()">...</a>'+
+											  '</li>';
+	    				}
+	    			}
+	    			
+	    		}
+	    		
+	    		pageController += '<li class="paginate_btn page-item next">'+
+									  '<a href="javascript:void(0);" class="p-link" onclick="nextPage()">下一页</a>'+
+								  '</li>';
+	    		$("#pagination").empty();
+	    		$("#pagination").append(pageController);
+	    		
+	    		// 给当前页添加背景颜色
+	    		$("#page-"+page.curPage + " a").addClass("active");
 	    	}
 	    },
 	    error : function(errorMsg) {
@@ -47,6 +103,26 @@ function requestData(){
 	    }
 	});
 }
+
+function prePage(){
+	
+}
+
+function nextPage(){
+	
+}
+
+function jumpToPage(e){
+	var id = e.parentNode.id;
+	// page-
+	var curPage = id.substring(id.indexOf("-")+1);
+	
+	requestData(curPage,"");
+}
+
+$(".p-link").click(function(){
+	var id = this.parentNode.id;
+});
 
 function checkMusicBox(event){
 	var trEle = event.parentNode.parentNode;
