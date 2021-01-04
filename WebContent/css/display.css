@@ -357,3 +357,98 @@ ul {
 .u-name{
 	color: #0c73c2;
 }
+
+.dis-music{
+	float: left;
+}
+
+.dis-opr{
+	float: right;
+    padding-top: 14px;
+    padding-right: 10px;
+}
+
+.dis-play{
+	background: url(/MusicPlayer/image/icon2.png) no-repeat;
+    margin-right: 16px;
+    background-position: -69px -455px;
+    float: left;
+    width: 10px;
+    height: 11px;
+    opacity: 0.9;
+}
+
+.dis-add{
+	background: url(/MusicPlayer/image/icon2.png) no-repeat;
+	background-position: -87px -454px;
+	float: left;
+    width: 10px;
+    height: 11px;
+    opacity: 0.9;
+}
+
+.t_operator{
+	height: 31px;
+}
+
+.list-play-bg{
+	background: url(../image/button2.png) no-repeat 0 -387px;
+	color: white;
+	width: 75px;
+	height: 30px;
+	border: 0px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.list-play-icon{
+	background: url(../image/button2.png) no-repeat 0 -1622px;
+	float: left;
+    width: 20px;
+    height: 18px;
+    margin: 6px 2px 2px 6px;
+}
+
+
+.icon-font{
+	display: inline-block;
+    padding-top: 5px;
+    padding-left: 3px;
+}
+
+#one-play{
+	float: left;
+}
+
+#one-save{
+	color: #333;
+    text-decoration: none;
+    margin-right: 6px;
+    font-family: simsun,\5b8b\4f53;
+    float: left;
+    height: 31px;
+    line-height: 30px;
+    min-width: 23px;
+    cursor: pointer;
+    padding: 0 5px 0 0;
+    white-space: nowrap;
+    width: 75px;
+    height: 31px;
+    padding-left: 10px;
+    
+}
+
+.save-icon{
+    float: left;
+    height: 31px;
+    cursor: pointer;
+    padding: 0 7px 0 36px;
+    background: url(../image/button2.png) no-repeat 0 -977px;
+    padding-right: 2px;
+    padding-left: 28px;
+    line-height: 30px;
+    min-width: 23px;
+    width: 35px;
+    border-radius: 5px;
+}

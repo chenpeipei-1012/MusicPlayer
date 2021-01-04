@@ -106,25 +106,7 @@ function fillMusicListInfo(curList){
 	}
 }
 
-function playMusic(){
-	// 改变带播放列表的歌曲数目
-	$("#curlistnum").empty();
-	$("#curlistnum").append(musicList.length);
 
-	// 选中列表中的第一首音乐播放$('#fry_audio').attr('src',nameAttrValue);
-	var path = '/MusicPlayer/' + musicList[curMusic].musicPath;
-	$('#audio').attr('src',path);
-	
-	// 改变路径后，需重新加载，重新赋值
-	$('#audio').load();
-	
-	// 等到资源加载完毕后再初始化
-	$("#audio")[0].oncanplay = function () {
-		rem.audio = $("#audio")[0];
-		initMusic();
-		rem.audio.play();
-	}
-}
 
 // 填充左侧歌单
 function fillLeftListData(playlistArr){
@@ -242,23 +224,16 @@ function fillMusicListData(musiclistArr){
     $("#mymusiclist .w2").click(function(event){
     	// 将选中的音乐加到待播放列表
     	var id = $(this).parent().attr("id");
-    	id = id.substring(id.lastIndexOf("-")+1);
-    	var index = findMusicListIndex(id,musiclistArr); // 找到这首歌在当前歌单中的下标
+    	var musicId = id.substring(id.lastIndexOf("-")+1);
     	
-    	var cruIndex = findMusicListIndex(id,musicList);
+    	var index = findMusicListIndex(musicId,musiclistArr); // 找到这首歌在当前歌单中的下标
+    	var music = musiclistArr[index];
     	
-    	// 查看待播放列表是否已经存在该歌曲
-    	if(cruIndex == -1){
-    		// 不存在，则往里面放
-    		cruIndex = musicList.push(musiclistArr[index]);
-    		cruIndex--;
-    	}
-    	
-    	// 播放选中的歌曲
-    	curMusic = cruIndex;
-    	playMusic();
+    	addAndPlayMusic(music);
     });
 }
+
+
 
 
 // GET请求加载页面数据
@@ -329,17 +304,6 @@ function choiceMusicList(musiclist){
 	// 刷新右边的歌曲列表  --> 部分刷新
 	refreshMusicList(playlistArr[index]);
 }
-
-//function findCurListIndex(id){
-//	// 找到musiclist.id对应的下标
-//	for(var i=0;i<musicList.length;i++){
-//		if(musicList[i].musicId == id){
-//			return i;
-//		}
-//	}
-//	
-//	return -1;
-//}
 
 function findListIndex(id){
 	for(var i=0;i<playlistArr.length;i++){
@@ -688,13 +652,17 @@ function viewMusicDetail(e){
 	addCss('/MusicPlayer/css/display.css');
 
 	// 加载content内容
-	$(".content").load("/MusicPlayer/user/display.jsp #container",function(){
+	$(".content").load("/MusicPlayer/display.jsp #container",function(){
 		 // 修改url
-		 history.pushState(null,null,"/MusicPlayer/user/display?musicId="+musicId);
+		 history.pushState(null,null,"/MusicPlayer/display?musicId="+musicId);
+		 // 定义变量
+		 
+		 
 		 $.getScript("/MusicPlayer/js/display.js",function(){
 			 // 通过musicId得到music
 			 var index = findMusicListIndex(musicId, musiclistArr);
-			 loadMusicInfo(musiclistArr[index]);
+			 var music = musiclistArr[index];
+			 initDisplayPage(music);
 		 });
 	});
         

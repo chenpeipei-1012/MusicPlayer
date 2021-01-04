@@ -16,6 +16,7 @@ function popTips(isSuccess,tipMsg){
 			'</div>' ;
 
 	$("#pop-content").append(tips);
+	
 	setTimeout(function(){
 		$("#tips").remove();
 	},3000);

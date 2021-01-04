@@ -1,8 +1,12 @@
-initDisplayPage();
+var music = null;
+var similarMusics = [];
 
 // 初始化歌曲详情页面
-function initDisplayPage(){
-	
+function initDisplayPage(curMusic){
+	music = curMusic;
+	loadMusicInfo(curMusic);
+	loadMusicComment(curMusic.musicId,1);
+	loadSimilarMusic(curMusic.musicTypeId);
 }
 // 根据URL中musicId加载音乐信息
 
@@ -74,42 +78,88 @@ function loadMusicInfo(music){
 	});
 }
 
-
-function loadMusiclist (RCMusic){
-	var aa = window.location.href;
-	var url = "/MusicPlayer/user/display?musicId="+music.music_id;
-	alert(aa);
+// 加载歌曲评论
+function loadMusicComment(musicId,curPage){
+	var url = "/MusicPlayer/comment?musicId="+musicId+"&curPage="+curPage;
 	$.ajax({
 		type : "GET",
 		async : true,
 		url : url,
 		dataType : "json",
 		success : function(result) {
-
-		
-
+			// 更新评论区
+			var content = "";
+			var mcList = result.mcList;
+			var user = null;
+			var musicComment = null;
+			for(var i=0;i<mcList.length;i++){
+				musicComment = mcList[i][0];
+				user = mcList[i][1];
+				content += '<div id="' + musicComment.mcId + '" class="itm">' +
+								'<div >' +
+									'<a  id="u1" href="javascript:void(0);">' +
+									'<img ass="touxiang" src="' + user.userPic + '" style="width:50px;height:50px;"></a>' +
+								'</div >' +				
+								'<div class="comid fix_texture">' +
+									'<a  id="u3nm" class="fix_texture u-name" >' + user.userNick + '</a> ：' +
+									'<a id="u3cm"  class="fix_texture">' + musicComment.comment + '</a>' +
+								'</div>' +			
+							'</div>';
+			}
+			
+			$("#comment-wrap").empty();
+			$("#comment-wrap").append(content);
 		},error : function(errorMsg) {
-			//请求失败时执行该函数
+			// 请求失败时执行该函数
 			alert("请求数据失败!");
 		}
 
 	});
 }
-function loadMusiComment (mclist){
-	var aa = window.location.href;
-	var url = "/MusicPlayer/user/display?musicId="+music.music_id;
-	alert(aa);
+
+// 加载推荐的相似歌曲
+function loadSimilarMusic(musicTypeId){
+	var url = "/MusicPlayer/recommend?musicTypeId="+musicTypeId;
 	$.ajax({
 		type : "GET",
 		async : true,
 		url : url,
 		dataType : "json",
 		success : function(result) {
-			//更新评论区
+			// 更新推荐歌曲区域
+			var content = "";
+			if(result.isSuccess){
+				similarMusics = result.recommendMusics
+				var recMusics = result.recommendMusics;
+				for(var i=0;i<recMusics.length;i++){
+					content += '<li class="songbar1" id="rec-' + recMusics[i].musicId +'"> ' +
+									'<div class="dis-music">' ;
+					if(i < 3){
+						content += 		'<span class="lable1" >';
+					}else{
+						content += 		'<span class="lable2" >';
+					}
+					
+					content += (i+1) + 	'</span> '+ 
+										'<a class="songlink" id="s1" href="javascript:void(0);">' + recMusics[i].musicName + '</a> '+ 
+									'</div>' +
+									'<div class="dis-opr">' +
+										'<a href="javascript:void(0);" class="dis-play" onclick="playRecommend(this)"></a>' +
+										'<a href="javascript:void(0);" class="dis-add" onclick="addRecommend(this)"></a>' +
+									'</div>'  +
+								'</li> ';
+				}
+				
+				$("#recommend-song").empty();
+			    $("#recommend-song").append(content);
+				
+			}
 			
-
+			
+			
+			
 		},error : function(errorMsg) {
-			//请求失败时执行该函数
+			// 请求失败时执行该函数
 			alert("请求数据失败!");
 		}
 
@@ -135,16 +185,25 @@ $(".flag_ctrl").click(function(){
 
 // 添加评论
 $("#addComment").click(function(){
-	// TODO
+	if(!isLogin("登录即可评论")){
+		return;
+	}
+
 	// 非空验证
-	
-	// 请求后台添加
 	var comment = $("#comment").val();
 	var musicId = $(".song")[0].id;
+	
+	if(comment == ""){
+		popTips(false,"评论不可为空！");
+		return;
+	}
+	
+	
+	// 请求后台添加
 	$.ajax({
         type : "POST",
         async : true,         
-        url : "/MusicPlayer/user/display",    
+        url : "/MusicPlayer/display",    
         dataType : "json",        //返回数据形式为json
         data:{
         	  "comment":comment,
@@ -157,10 +216,10 @@ $("#addComment").click(function(){
         		tipMsg = "评论成功";
         		
         		// 清空comment
-        		$("#comment").empty();
+        		$("#comment").val("");
         		
         		// 刷新下方评论
-        		// TODO
+        		loadMusicComment(musicId,1);
         	}else{
         		// 提示：
         		tipMsg = "评论失败";
@@ -174,3 +233,69 @@ $("#addComment").click(function(){
 	        }
 	    });
 });
+
+// TODO
+// 添加到待播放列表
+//添加并播放歌曲
+function playRecommend(e){
+	var id = e.parentNode.parentNode.id;
+	
+	var musicId = id.substring(id.indexOf("-")+1);
+	
+	// 推荐的歌曲对象: 在数组中根据ID找到对象
+	var index = findMusicListIndex(musicId, similarMusics);
+	if(index != -1){
+		var choiceMusic = similarMusics[index];
+		addAndPlayMusic(choiceMusic);
+	}
+}
+
+// 添加歌曲
+function addRecommend(e){
+var id = e.parentNode.parentNode.id;
+	
+	var musicId = id.substring(id.indexOf("-")+1);
+	
+	// 推荐的歌曲对象: 在数组中根据ID找到对象
+	var index = findMusicListIndex(musicId, similarMusics);
+	if(index != -1){
+		var choiceMusic = similarMusics[index];
+		addMusicToBeList(choiceMusic);
+		
+		// 刷新总待播放歌曲数量
+		$("#curlistnum").empty();
+		$("#curlistnum").append(musicList.length);
+	}
+}
+
+// 播放当前歌曲
+$("#one-play").click(function(){
+	// 将选中的音乐加到待播放列表,并播放
+	var musicId = $(".song").attr("id");
+	
+	addAndPlayMusic(music);
+});
+
+// 收藏当前歌曲
+$("#save-icon").click(function(){
+	if(!isLogin("登录即可收藏歌曲")){
+		return;
+	}
+	
+	var musicId = $(".song").attr("id");
+	
+	// 保存歌曲到歌单
+	queryAndFillSavePop(musicId);
+});
+
+function isLogin(tipMsg){
+	// 登录验证： 未登录，则不允许评论，提示用户未登录
+	var src = $("#user-pic").attr("src");
+	if(src.indexOf("default_avatar.jpg") != -1){
+		// 未登录
+		popTips(false,tipMsg);
+		return false;
+	}
+	
+	return true
+}

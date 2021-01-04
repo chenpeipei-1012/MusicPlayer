@@ -113,6 +113,7 @@ insert into album(album_id,album_name) values(3,'《琉璃 电视剧原声带》
 insert into album(album_id,album_name) values(4,'《延禧攻略》');
 insert into album(album_id,album_name) values(5,'《三生三世十里桃花 电视剧原声带》');
 insert into album(album_id,album_name) values(6,'华宇热门');
+INSERT INTO `album` VALUES ('7', '关山酒 ');
 
 /* 音乐 */
 insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic,music_duration) values('走着走着花就开了','卓舒晨',1,'musicCloud/music/卓舒晨_走着走着花就开了.mp3','musicCloud/lyric/卓舒晨_走着走着花就开了_1.txt',4,'musicCloud/musicPic/卓舒晨_走着走着花就开了_1.jpg','03:48');
@@ -124,7 +125,36 @@ insert into music(music_name,music_author,music_album_id,music_path,music_lyric_
 insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic,music_duration) values('雪落下的声音','陆虎',4,'musicCloud/music/雪落下的声音_陆虎.mp3','musicCloud/lyric/陆虎_雪落下的声音_4.txt',5,'musicCloud/musicPic/陆虎_雪落下的声音_4.jpg','05:11');
 
 insert into music(music_name,music_author,music_album_id,music_path,music_lyric_path,music_type_id,music_pic,music_duration) values('繁花','董贞',5,'musicCloud/music/董贞_繁花.mp3','musicCloud/lyric/董贞_繁花_5.txt',5,'musicCloud/musicPic/董贞_繁花_5.jpg','03:45');
-
+INSERT INTO `music` VALUES ('6', '关山酒 ', '等什么君', '7', 'musicCloud/musicPic/关山酒.jpg', 'musicCloud/music/关山酒.mp3', '2021-01-02 15:36:44', 'musicCloud/lyric/关山酒_等什么君.txt', '1', '03:54');
+INSERT INTO `music` VALUES ('7', '归去来兮', '花粥', '6', 'musicCloud/musicPic/归去来兮_花粥.jpg', 'musicCloud/music/归去来兮_花粥.mp3', '2021-01-02 15:41:20', 'musicCloud/lyric/归去来兮_花粥.txt', '1', '03:26');
+INSERT INTO `music` VALUES ('8', '悟空', '戴荃', '6', 'musicCloud/musicPic/悟空_戴荃.jpg', 'musicCloud/music/悟空_戴荃.mp3 ', '2021-01-02 15:45:53', 'musicCloud/lyric/悟空_戴荃.txt', '1', '03:20');
+INSERT INTO `music` VALUES ('9', '断桥残雪', '许嵩', '6', 'musicCloud/musicPic/断桥残雪_许嵩.jpg', 'musicCloud/music/断桥残雪_许嵩.mp3', '2021-01-02 15:51:15', 'musicCloud/lyric/断桥残雪_许嵩.txt', '1', '03:47');
+INSERT INTO `music` VALUES ('10', '醉赤壁', '林俊杰', '6', 'musicCloud/musicPic/醉赤壁_林俊杰 .jpg', 'musicCloud/music/醉赤壁_林俊杰.mp3 ', '2021-01-02 19:25:36', 'musicCloud/lyric/醉赤壁_林俊杰.txt', '1', '04:41');
+INSERT INTO `music` VALUES ('11', '声声慢', '崔开潮', '6', 'musicCloud/musicPic/声声慢_崔开潮.jpg', 'musicCloud/music/声声慢_崔开潮.mp3', '2021-01-02 19:31:12', 'musicCloud/lyric/声声慢_崔开潮.txt', '1', '03:32');
+INSERT INTO `music` VALUES ('12', '执迷不悟', '鱿籽酱', '6', 'musicCloud/musicPic/执迷不悟_鱿籽酱.jpg', 'musicCloud/music/执迷不悟_鱿籽酱.mp3', '2021-01-02 19:57:38', 'musicCloud/lyric/执迷不悟_鱿籽酱.txt', '2', '03:00');
+INSERT INTO `music` VALUES ('13', '踏山河', '是七叔呢', '6', 'musicCloud/musicPic/踏山河_是七叔呢.jpg', 'musicCloud/music/踏山河_是七叔呢.mp3', '2021-01-02 19:58:41', 'musicCloud/lyric/踏山河_是七叔呢.txt', '2', '02:48');
+INSERT INTO `music` VALUES ('14', '追光者', '岑宁儿', '6', 'musicCloud/musicPic/追光者_岑宁儿.jpg', 'musicCloud/music/追光者_岑宁儿.mp3', '2021-01-02 19:59:22', 'musicCloud/lyric/追光者_岑宁儿.txt', '2', '03:55');
+INSERT INTO `music` VALUES ('15', '我好想你', '苏打绿', '6', 'musicCloud/musicPic/我好想你_苏打绿.jpg', 'musicCloud/music/我好想你_苏打绿.mp3', '2021-01-02 20:00:45', 'musicCloud/lyric/我好想你_苏打绿.txt', '2', '05:24');
+INSERT INTO `music` VALUES ('16', '不染', '毛不易', '6', 'musicCloud/musicPic/不染_毛不易.jpg', 'musicCloud/music/不染_毛不易.mp3', '2021-01-02 20:01:48', 'musicCloud/lyric/不染_毛不易.txt', '2', '05:25');
+INSERT INTO `music` VALUES ('17', '烟雨行舟', '司南', '6', 'musicCloud/musicPic/烟雨行舟_司南.jpg', 'musicCloud/music/烟雨行舟_司南.mp3', '2021-01-02 20:57:03', 'musicCloud/lyric/烟雨行舟_司南.txt', '2', '04:27');
+INSERT INTO `music` VALUES ('18', '月半小夜曲', '李克勤', '6', 'musicCloud/musicPic/月半小夜曲_李克勤.jpg', 'musicCloud/music/月半小夜曲_李克勤.mp3', '2021-01-02 20:58:10', 'musicCloud/lyric/月半小夜曲_李克勤.txt', '3', '04:51');
+INSERT INTO `music` VALUES ('19', '甜蜜蜜', '邓丽君', '6', 'musicCloud/musicPic/甜蜜蜜_邓丽君.jpg', 'musicCloud/music/甜蜜蜜_邓丽君.mp3', '2021-01-02 21:00:13', 'musicCloud/lyric/甜蜜蜜_邓丽君.txt', '3', '03:30');
+INSERT INTO `music` VALUES ('20', '谢谢你的爱', '刘德华', '6', 'musicCloud/musicPic/谢谢你的爱_刘德华.jpg', 'musicCloud/music/谢谢你的爱_刘德华.mp3', '2021-01-02 21:01:07', 'musicCloud/lyric/谢谢你的爱_刘德华.txt', '3', '04:39');
+INSERT INTO `music` VALUES ('21', '遇见', '孙燕姿', '6', 'musicCloud/musicPic/遇见_孙燕姿.jpg', 'musicCloud/music/遇见_孙燕姿.mp3', '2021-01-02 21:06:16', 'musicCloud/lyric/遇见_孙燕姿.txt', '3', '03:30');
+INSERT INTO `music` VALUES ('22', '千千阙歌', '陈慧娴', '6', 'musicCloud/musicPic/千千阙歌_陈慧娴.jpg', 'musicCloud/music/千千阙歌_陈慧娴.mp3', '2021-01-02 21:07:31', 'musicCloud/lyric/千千阙歌_陈慧娴.txt', '3', '04:59');
+INSERT INTO `music` VALUES ('23', '我恨我痴心', '刘德华', '6', 'musicCloud/musicPic/我恨我痴心_刘德华.jpg', 'musicCloud/music/我恨我痴心_刘德华.mp3', '2021-01-02 21:08:07', 'musicCloud/lyric/我恨我痴心_刘德华.txt', '3', '04:10');
+INSERT INTO `music` VALUES ('24', '岁月神偷', '金玟岐', '6', 'musicCloud/musicPic/岁月神偷_金玟岐.jpg', 'musicCloud/music/岁月神偷_金玟岐.mp3', '2021-01-02 21:44:49', 'musicCloud/lyric/岁月神偷_金玟岐.txt', '4', '02:42');
+INSERT INTO `music` VALUES ('25', '说散就散', 'JC 陈咏桐', '6', 'musicCloud/musicPic/说散就散_JC 陈咏桐.jpg', 'musicCloud/music/说散就散_JC陈咏桐.mp3', '2021-01-02 21:45:43', 'musicCloud/lyric/说散就散_JC陈咏桐.txt', '4', '03:52');
+INSERT INTO `music` VALUES ('26', '云烟成雨', '房东的猫', '6', 'musicCloud/musicPic/云烟成雨_房东的猫.jpg', 'musicCloud/music/云烟成雨_房东的猫.mp3', '2021-01-02 21:46:38', 'musicCloud/lyric/云烟成雨_房东的猫.txt', '4', '04:00');
+INSERT INTO `music` VALUES ('27', '往后余生', '马良', '6', 'musicCloud/musicPic/往后余生_马良.jpg', 'musicCloud/music/往后余生_马良.mp3', '2021-01-02 21:47:32', 'musicCloud/lyric/往后余生_马良.txt', '4', '03:15');
+INSERT INTO `music` VALUES ('28', '有点甜', '汪苏泷,By2', '6', 'musicCloud/musicPic/有点甜_汪苏泷,By2.jpg', 'musicCloud/music/有点甜_汪苏泷,By2.mp3', '2021-01-02 21:48:34', 'musicCloud/lyric/有点甜_汪苏泷,By2.txt', '4', '03:55');
+INSERT INTO `music` VALUES ('29', '小手拉大手', '梁静茹,三十位素人', '6', 'musicCloud/musicPic/小手拉大手 (Live)_梁静茹,三十位素人.jpg', 'musicCloud/music/小手拉大手 (Live)_梁静茹,三十位素人.mp3', '2021-01-02 21:49:18', 'musicCloud/lyric/小手拉大手 (Live)_梁静茹,三十位素人.txt', '4', '03:38');
+INSERT INTO `music` VALUES ('30', 'Freedom', 'Anthony Hamilton', '6', 'musicCloud/musicPic/Freedom_Anthony Hamilton,Elayna Boynton.jpg', 'musicCloud/music/Freedom_Anthony Hamilton,Elayna Boynton.mp3', '2021-01-02 21:52:14', 'musicCloud/lyric/Freedom_Anthony Hamilton,Elayna Boynton.txt', '5', '03:56');
+INSERT INTO `music` VALUES ('31', 'Django', 'Luis Bacalov', '6', 'musicCloud/musicPic/Django_Luis Bacalov,Rocky Roberts.jpg\r\n', 'musicCloud/music/Django_Luis Bacalov,Rocky Roberts.mp3', '2021-01-02 21:53:25', 'musicCloud/lyric/Django_Luis Bacalov,Rocky Roberts.txt', '5', '02:53');
+INSERT INTO `music` VALUES ('32', 'You Never Can Tell', 'Chuck Berry', '6', 'musicCloud/musicPic/You Never Can Tell_Chuck Berry.jpg', 'musicCloud/music/You Never Can Tell_Chuck Berry.mp3', '2021-01-02 22:04:42', 'musicCloud/lyric/You Never Can Tell_Chuck Berry.txt', '5', '02:42 ');
+INSERT INTO `music` VALUES ('33', 'Bang Bang(My Baby Shot Me Down)', 'Nancy Sinatra', '6', 'musicCloud/musicPic/Bang Bang (My Baby Shot Me Down)_Nancy Sinatra.jpg', 'musicCloud/music/Bang Bang (My Baby Shot Me Down)_Nancy Sinatra.mp3', '2021-01-02 22:05:39', 'musicCloud/lyric/Bang Bang (My Baby Shot Me Down)_Nancy Sinatra.txt', '5', '02:40');
+INSERT INTO `music` VALUES ('34', 'Twisted Nerve', 'Bernard Herrmann', '6', 'musicCloud/musicPic/Twisted Nerve_Bernard Herrmann.jpg', 'musicCloud/music/Twisted Nerve_Bernard Herrmann.mp3', '2021-01-02 22:13:58', 'musicCloud/lyric/Twisted Nerve_Bernard Herrmann.txt', '5', '01:29');
+INSERT INTO `music` VALUES ('35', 'Now You\'re All Alone', 'David Hess', '6', 'musicCloud/musicPic/Now You\'re All Alone_David Hess.jpg', 'musicCloud/music/Now You\'re All Alone_David Hess.mp3', '2021-01-02 22:14:47', 'musicCloud/lyric/Now You\'re All Alone_David Hess.txt', '5', '01:29');
 
 /* 歌单 */
 insert into user_musiclist(list_id,list_name,list_uid,list_love) values(1,'我喜欢的音乐',1,1);

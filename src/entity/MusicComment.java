@@ -1,63 +1,69 @@
 package entity;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class MusicComment {
-    private Integer mcId;
-    private Integer musicId;
+    private int mcId;
+    private int musicId;
     private String comment;
-    private Integer userId;
+    private int userId;
     private Timestamp commentDate;
-
 
     public MusicComment(){
     	
     }
     
-    
-    
-    public Integer getMc_id() {
-        return mcId;
-    }
+    public MusicComment(Integer mcId, Integer musicId, String comment,
+			Integer userId, Timestamp commentDate) {
+		super();
+		this.mcId = mcId;
+		this.musicId = musicId;
+		this.comment = comment;
+		this.userId = userId;
+		this.commentDate = commentDate;
+	}
 
-    public void setMc_id(Integer mc_id) {
-        this.mcId = mc_id;
-    }
+    public int getMcId() {
+		return mcId;
+	}
 
-    public Integer getMusic_id() {
-        return musicId;
-    }
+	public void setMcId(int mcId) {
+		this.mcId = mcId;
+	}
 
-    public void setMusic_id(Integer music_id) {
-        this.musicId = music_id;
-    }
+	public int getMusicId() {
+		return musicId;
+	}
 
-    public String getComment() {
-        return comment;
-    }
+	public void setMusicId(int musicId) {
+		this.musicId = musicId;
+	}
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+	public String getComment() {
+		return comment;
+	}
 
-    public Integer getUser_id() {
-        return userId;
-    }
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
-    public void setUser_id(Integer user_id) {
-        this.userId = user_id;
-    }
+	public int getUserId() {
+		return userId;
+	}
 
-    public Timestamp getComment_date() {
-        return commentDate;
-    }
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
-    public void setComment_date(Timestamp comment_date) {
-        this.commentDate = comment_date;
-    }
+	public Timestamp getCommentDate() {
+		return commentDate;
+	}
 
-    @Override
+	public void setCommentDate(Timestamp commentDate) {
+		this.commentDate = commentDate;
+	}
+
+	@Override
     public String toString() {
         return "MusicComment{" +
                 "mc_id=" + mcId +

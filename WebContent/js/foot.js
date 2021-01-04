@@ -431,7 +431,8 @@ $(".lock").click(function(){
 			var e = this.parentNode.parentNode.parentNode;
 			var musicId = e.id.substring(e.id.indexOf("_")+1);
 			var choiceMusicIndex = findMusicListIndex(musicId,musicList);
-			queryAndFillSavePop(choiceMusicIndex);
+			var musicId = musicList[choiceMusicIndex].musicId;
+			queryAndFillSavePop(musicId);
 		});
 		$(".icons .icon-download").click(function(){
 			var e = this.parentNode.parentNode.parentNode;
@@ -619,7 +620,7 @@ $("#like").click(function(){
 });
 
 // 请求歌单列表
-function queryAndFillSavePop(choiceMusicIndex){
+function queryAndFillSavePop(musicId){
 	var url = "/MusicPlayer/user/playlist?date=" + new Date().getTime();
 	// 请求歌单
 	$.ajax({
@@ -636,7 +637,8 @@ function queryAndFillSavePop(choiceMusicIndex){
 	    		// 得到选中歌单id
 	    		var listId = this.id.substring(4);
 	    		// 得到当前歌曲ID
-	    		var musicId = musicList[choiceMusicIndex].musicId;
+	    		// TODO
+	    		// var musicId = musicList[choiceMusicIndex].musicId;
 	    		
 	    		// 请求添加
 	    		addMusicToList(listId,musicId);
@@ -695,4 +697,51 @@ function addMusicToList(listId,musicId){
 	        alert("请求数据失败!");
 	    }
 	});
+}
+
+
+function addAndPlayMusic(music){
+	var cruIndex = findMusicListIndex(music.musicId,musicList);
+	
+	// 查看待播放列表是否已经存在该歌曲
+	if(cruIndex == -1){
+		// 不存在，则往里面放
+		cruIndex = musicList.push(music);
+		cruIndex--;
+	}
+	
+	// 播放选中的歌曲
+	curMusic = cruIndex;
+	playMusic();
+}
+
+function addMusicToBeList(music){
+	var cruIndex = findMusicListIndex(music.musicId,musicList);
+	
+	// 查看待播放列表是否已经存在该歌曲
+	if(cruIndex == -1){
+		// 不存在，则往里面放
+		cruIndex = musicList.push(music);
+		cruIndex--;
+	}
+}
+
+function playMusic(){
+	// 改变带播放列表的歌曲数目
+	$("#curlistnum").empty();
+	$("#curlistnum").append(musicList.length);
+
+	// 选中列表中的第一首音乐播放$('#fry_audio').attr('src',nameAttrValue);
+	var path = '/MusicPlayer/' + musicList[curMusic].musicPath;
+	$('#audio').attr('src',path);
+	
+	// 改变路径后，需重新加载，重新赋值
+	$('#audio').load();
+	
+	// 等到资源加载完毕后再初始化
+	$("#audio")[0].oncanplay = function () {
+		rem.audio = $("#audio")[0];
+		initMusic();
+		rem.audio.play();
+	}
 }

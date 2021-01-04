@@ -39,6 +39,7 @@ public class EncodingFilter implements Filter {
 		path = path.substring(12);
 		// 将请求转新URL
 		if(path.contains("musicCloud")){
+			System.out.println("path :" + path);
 			httptRequest.getRequestDispatcher(path).forward(httptRequest, httpResponse);
 		}
 		else

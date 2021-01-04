@@ -49,6 +49,9 @@ public class ListMusicDaoImpl implements ListMusicDao{
 			
 			music.setMusicDuration(result.getString("music_duration"));
 			
+			// ∏Ë«˙¿‡–Õ
+            music.setMusicTypeId(result.getInt("music_type_id"));
+			
 			list.add(music);
 		}
 

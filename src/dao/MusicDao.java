@@ -21,8 +21,11 @@ public interface MusicDao {
 	// 得到近一周下载数量
 	public List<MusicDownload> queryDownloadNum() throws SQLException;
 	
-	// 通过
-	public Music getMusicById(Integer id) throws SQLException;
+	// 通过歌曲ID获得歌曲对象
+	public Music getMusicById(int id) throws SQLException;
 
 	public List<Music> queryMusicRecomMost()throws SQLException;
+	
+	// 得到与这首歌类似的歌曲列表
+	public List<Music> querySimilarSongs(int musicType) throws SQLException;
 }

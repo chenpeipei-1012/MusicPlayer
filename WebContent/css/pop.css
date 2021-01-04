@@ -48,8 +48,8 @@ input,button{
 .pop-content{
 	background: #fff;
 	font-size: 12px;
-color: #333;
-font-family: Arial, Helvetica, sans-serif;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
 	height: 211px;
 }
 .pop-content-wrap{

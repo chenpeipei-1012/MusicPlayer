@@ -49,7 +49,7 @@ public class MusicDaoImpl implements MusicDao{
 	}
 
 	@Override
-    public Music getMusicById(Integer id) throws SQLException{
+    public Music getMusicById(int id) throws SQLException{
 		Connection conn = DBUtils.getConnection();
         String sql="select * from music " + 
 						"LEFT JOIN album " + 
@@ -72,6 +72,9 @@ public class MusicDaoImpl implements MusicDao{
             music.setMusicCreatedTime(rs.getTimestamp("music_created_time"));
             music.setMusicLyricPath(rs.getString("music_lyric_path"));
             music.setMusicPic(rs.getString("music_pic"));
+            
+            // ∏Ë«˙¿‡–Õ
+            music.setMusicTypeId(rs.getInt("music_type_id"));
         }
         
         return music;
@@ -129,5 +132,45 @@ public class MusicDaoImpl implements MusicDao{
 	public List<MusicDownload> queryDownloadNum() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Music> querySimilarSongs(int musicType) throws SQLException {
+		List<Music> list = new ArrayList<Music>();
+		
+		Connection conn = DBUtils.getConnection();
+        String sql = "select * from " +
+						"(select * from music where music_type_id = ?) t1 " +
+						"left join album " + 
+						"on t1.music_album_id =  album.album_id " +
+						"left join  " +
+						"(select mid,count(mid) save_count from list_music GROUP BY mid) t2 " +
+						"on t1.music_id=t2.mid " +
+						"order by save_count desc  " +
+						"limit 0,10";
+        
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1,musicType);
+        
+        ResultSet rs=ps.executeQuery();
+
+        Music music = null;
+        while (rs.next()) {
+            music = new Music();
+            music.setMusicId(rs.getInt("music_id"));
+            music.setMusicName(rs.getString("music_name"));
+            music.setMusicAuthor(rs.getString("music_author"));
+            music.setMusicAlbum(rs.getString("album_name"));
+            music.setMusicPath(rs.getString("music_path"));
+            music.setMusicCreatedTime(rs.getTimestamp("music_created_time"));
+            music.setMusicLyricPath(rs.getString("music_lyric_path"));
+            music.setMusicPic(rs.getString("music_pic"));
+            
+            list.add(music);
+        }
+        
+        DBUtils.closeConnection(conn);
+        
+        return list;
 	}
 }

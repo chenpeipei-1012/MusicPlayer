@@ -1,6 +1,5 @@
 package dao;
 
-import entity.MusicComment;
 import entity.Pagination;
 
 import java.sql.SQLException;
@@ -12,7 +11,7 @@ public interface MusicCommentDao {
 	public int getCommentCountByMusicId(int musicId) throws SQLException;
 	
 	// 通过歌曲ID和分页实体获得某页的歌曲评论集合
-    public List<MusicComment> getMusicCommentsByMusicId (int musicId, Pagination page) throws SQLException;
+    public List<Object[]> getMusicCommentsByMusicId (int musicId, Pagination page) throws SQLException;
     
     // 为歌曲添加评论
     public void addMusicComment(int musicId, int userId, String comment) throws SQLException;
